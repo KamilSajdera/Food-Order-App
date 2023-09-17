@@ -1,0 +1,50 @@
+.sidebarContainer 
+{
+    width: 20%;
+    min-height: 100vh;
+    border-right: 2px solid #f3f3f3;
+    padding-top: 30px;
+    position: fixed;
+    top: 0;
+}
+
+.sidebarContainer header 
+{
+    display: flex;
+    width: 100%;
+    padding: 30px 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo 
+{
+    background: #f8f8f7;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px;
+    border-radius: 10px;
+}
+
+.logo img 
+{
+    width: 45px;
+}
+
+.logoTitle 
+{
+    font-weight: 700;
+    display: none;
+    padding-top: 5px;
+    font-size: 1.15rem;
+}
+
+@media screen and (min-width: 767px) {
+    .logoTitle { display: block; }
+}
+
+@media screen and (min-width: 1023px) {
+    .logoTitle { font-size: 1.35rem; }
+}

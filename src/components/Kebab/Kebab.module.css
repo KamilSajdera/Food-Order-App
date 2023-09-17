@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+.kebabWrapper 
+{
+    width: 100%;
+    padding: 10px 30px;
+}
+
+.kebabWrapper header 
+{
+    display: flex;
+    align-items: center;
+}
+
+.kebabWrapper h1 
+{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2.5rem;
+}
+
+.kebabWrapper img 
+{
+    width: 50px;
+    padding-top: 5px;
+    margin-left: 15px;  
+}

@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700&display=swap');
+
+.burgersItemsWrapper 
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.burger-item 
+{
+    width: 100%;
+    min-height: 200px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 0px 18px -7px #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.burgerImg 
+{
+    position: relative;
+    text-align: center;
+}
+
+.burger-item img 
+{
+    position: inherit;
+    margin-left: 0;
+    z-index: 1;
+    width: 55%;
+    padding-top: 40px;
+}
+
+
+.itemBottomShadow
+{
+    width: 45%;
+    height: 0px;
+    background: transparent;
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 12px 3px;
+}
+
+.burger-item h1 
+{
+    font-family: 'DM Sans', sans-serif!important;
+    padding-top: 20px;
+    font-size: 1.5rem!important;
+}
+
+.burger-item p 
+{
+    color: #a4a4a4;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.price 
+{
+    color: #ffcb44;
+    font-weight: 600;
+    padding-top: 30px;
+    padding-bottom: 45px;
+    font-size: 1.4rem;
+}
+
+@media screen and (min-width: 767px) {
+   .burger-item { width: 48%; } 
+}
+
+@media screen and (min-width: 900px) {
+    .burger-item { width: 31%; } 
+ }
+
+
+ .clickAnimation 
+ {
+    animation-name: scale;
+    animation-duration: 0.2s;
+ }
+
+ @keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+ }

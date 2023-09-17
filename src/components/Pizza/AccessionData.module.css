@@ -1,0 +1,51 @@
+.accessionsDetails 
+{
+    width: 100%;
+    padding: 0 20px;
+}
+
+.pizzaOptions 
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.pizzaOptions:nth-child(2)
+{
+    margin: 25px 0 40px 0;;
+}
+
+.pizzaOptions h4 
+{
+    width: 100%;
+}
+
+.pizza-option 
+{
+    width: 31%;
+    padding: 8px 0;
+    text-align: center;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #c9c9c9;
+}
+
+.active 
+{
+    background: #ffca40;
+    border: 1px solid #ffca40;
+    color: #2a2a2a;
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

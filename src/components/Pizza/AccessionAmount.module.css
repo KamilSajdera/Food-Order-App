@@ -1,0 +1,97 @@
+.accessions 
+{
+    list-style-type: none;
+    width: 100%;
+    padding: 0 5px;
+}
+
+.accessions li 
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.accessionName 
+{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    width: 50%;
+}
+
+.accessionName img 
+{
+    width: 50px;
+}
+
+.accessionName h3 
+{
+    padding-top: 7px;
+    font-size: 0.85rem;
+}
+
+.amountContainer 
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 45%;
+}
+
+.amountLess,
+.amountMore
+{
+    border: none;
+    outline: none;
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+.amountMore 
+{
+    background: #fec940;
+}
+
+.amount 
+{
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+@media screen and (min-width: 900px) 
+{
+    .accessions 
+    {
+        padding: 0 40px;
+    }
+}
+
+@media screen and (min-width: 1420px) {
+    .accessions 
+    {
+        padding: 0 60px;
+    }
+
+    .accessionName 
+    {
+        font-size: 1.05rem;
+    }
+
+    .accessionName h3 
+    {
+        font-size: 1rem;
+    }
+
+    .amountLess, 
+    .amountMore 
+    {
+        padding: 10px 15px;
+    }
+
+    .price 
+    {
+        font-size: 1.5rem;
+    }
+}
