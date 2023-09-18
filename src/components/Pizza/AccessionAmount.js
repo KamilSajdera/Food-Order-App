@@ -13,7 +13,7 @@ import champignons from '../../assets/pizza/champignons.png';
 import olives from '../../assets/pizza/olives.png';
 
 
-const AccessionsAmount = () => {
+const AccessionsAmount = props => {
 
     const [ACCESSIONS, setACCESSIONS] = useState([
         { 
@@ -70,6 +70,12 @@ const AccessionsAmount = () => {
             updatedAccessions[index].quantity--;
 
         setACCESSIONS(updatedAccessions);
+
+        const totalCost = updatedAccessions.reduce((acc, accession) => {
+            return acc + accession.quantity * accession.price;
+          }, 0);
+
+          props.onChangeSurcharge(totalCost)
     }
 
     const handleAmountMoreClick = accession => 
@@ -80,6 +86,11 @@ const AccessionsAmount = () => {
         updatedAccessions[index].quantity++;
 
         setACCESSIONS(updatedAccessions);
+        const totalCost = updatedAccessions.reduce((acc, accession) => {
+            return acc + accession.quantity * accession.price;
+        }, 0);
+
+        props.onChangeSurcharge(totalCost)
     }
 
     return (

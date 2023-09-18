@@ -3,7 +3,7 @@ import classes from './AccessionData.module.css';
 
 import AccessionsAmount from './AccessionAmount'
 
-const AccessionData = () => {
+const AccessionData = props => {
 
     const sizeRef = useRef();
     const bignessRef = useRef();
@@ -66,7 +66,7 @@ const AccessionData = () => {
         }
     }, [changeBignessHandler, changeSizeHandler])
 
-    console.log(pizzaDetails)
+    const changeSurchargeHandler = value => props.onChangeSurcharge(value)
 
     return (
         <div className={classes.accessionsDetails}>
@@ -81,7 +81,7 @@ const AccessionData = () => {
                 <div className={`${classes['pizza-option']} ${classes.active}`} style={{width: '48%'}}>Traditional</div>
                 <div className={classes['pizza-option']} style={{width: '48%'}}>Thin</div>
             </div>
-            <AccessionsAmount />
+            <AccessionsAmount onChangeSurcharge={changeSurchargeHandler}/>
         </div>
     )
 };
