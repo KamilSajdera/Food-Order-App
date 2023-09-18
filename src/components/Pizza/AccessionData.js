@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import classes from './AccessionData.module.css';
 
 import AccessionsAmount from './AccessionAmount'
@@ -7,6 +7,41 @@ const AccessionData = () => {
 
     const sizeRef = useRef();
     const bignessRef = useRef();
+
+    const [pizzaDetails, setPizzaDetails] = useState({
+        size: "25cm",
+        dough: "Traditional"
+    })
+
+    const changeSizeHandler = useCallback((value) => {
+        const sizeItems = sizeRef.current.querySelectorAll(`.${classes['pizza-option']}`); 
+
+        sizeItems.forEach((item) => {
+            item.classList.remove(classes.active)
+            if(item.textContent === value) {
+                item.classList.add(classes.active)
+                setPizzaDetails(prev => ({
+                    ...prev,
+                    size: item.textContent
+                }))
+            }
+        })
+    }, [])
+
+    const changeBignessHandler = useCallback((value) => {
+        const bignessItems = bignessRef.current.querySelectorAll(`.${classes['pizza-option']}`); 
+
+        bignessItems.forEach((item) => {
+            item.classList.remove(classes.active)
+            if(item.textContent === value) {
+                item.classList.add(classes.active)
+                setPizzaDetails(prev => ({
+                    ...prev,
+                    dough: item.textContent
+                }))
+            }
+        })
+    }, [])
 
     useEffect(() => {
         const sizeItems = sizeRef.current.querySelectorAll(`.${classes['pizza-option']}`);
@@ -29,31 +64,9 @@ const AccessionData = () => {
                 bigItem.removeEventListener('click', null)  
               });  
         }
-    }, [])
+    }, [changeBignessHandler, changeSizeHandler])
 
-    const changeSizeHandler = (value) => {
-        const sizeItems = sizeRef.current.querySelectorAll(`.${classes['pizza-option']}`); 
-
-        sizeItems.forEach((item) => {
-            item.classList.remove(classes.active)
-            if(item.textContent === value) {
-                item.classList.add(classes.active)
-                console.log(item.textContent)
-            }
-        })
-    }
-
-    const changeBignessHandler = (value) => {
-        const bignessItems = bignessRef.current.querySelectorAll(`.${classes['pizza-option']}`); 
-
-        bignessItems.forEach((item) => {
-            item.classList.remove(classes.active)
-            if(item.textContent === value) {
-                item.classList.add(classes.active)
-                console.log(item.textContent)
-            }
-        })
-    }
+    console.log(pizzaDetails)
 
     return (
         <div className={classes.accessionsDetails}>
