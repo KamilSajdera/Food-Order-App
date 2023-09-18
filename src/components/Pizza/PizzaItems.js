@@ -95,6 +95,7 @@ const PizzaItems = () => {
             pizzaItem.addEventListener('click', () => { 
                 const pizzaName = pizzaItem.querySelector('h1').textContent;
                 showAccessionHandler(pizzaName)
+                animateItem(pizzaItem)    
              });
         })
     
@@ -113,9 +114,14 @@ const PizzaItems = () => {
         setPizzaObject(pizzaObject)
     }
 
-    const closeAccessionsHandler = () => 
-    {
-        setShowAccessions(false);
+    const closeAccessionsHandler = () => setShowAccessions(false);
+
+    const animateItem = (e) => {
+        e.classList.add(classes.clickAnimation);
+
+        setTimeout(() => {
+            e.classList.remove(classes.clickAnimation); 
+        }, 300);
     }
 
     return (
