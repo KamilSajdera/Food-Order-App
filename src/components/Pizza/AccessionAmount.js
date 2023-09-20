@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 import classes from './AccessionAmount.module.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+
+import useAccessionQuantity from '../../hooks/AccessionsAmountManagement';
 
 import corn from '../../assets/pizza/corn.png';
 import basil from '../../assets/pizza/basil.png';
@@ -15,7 +17,7 @@ import olives from '../../assets/pizza/olives.png';
 
 const AccessionsAmount = props => {
 
-    const [ACCESSIONS, setACCESSIONS] = useState([
+    const initialAccessions = [
         { 
             id: 1,
             img: corn, 
@@ -58,45 +60,33 @@ const AccessionsAmount = props => {
             price: 0.15,
             quantity: 0
         }
-    ]);
+    ];
 
+    const { accessions, updateQuantity, totalCost } = useAccessionQuantity(initialAccessions)
 
     const handleAmountLessClick = accession => 
-    {
-        let updatedAccessions = [...ACCESSIONS]
-        const index = ACCESSIONS.findIndex((acc) => acc.id === accession.id);
-
-        if(updatedAccessions[index].quantity > 0)
-            updatedAccessions[index].quantity--;
-
-        setACCESSIONS(updatedAccessions);
-
-        const totalCost = updatedAccessions.reduce((acc, accession) => {
-            return acc + accession.quantity * accession.price;
-          }, 0);
-
-          props.onChangeSurcharge(totalCost)
+    {      
+        if(accession.quantity > 0)
+        {
+            const newQuantity = accession.quantity - 1;
+            updateQuantity(accession.id, newQuantity)
+        }
     }
 
     const handleAmountMoreClick = accession => 
     {
-        let updatedAccessions = [...ACCESSIONS]
-        const index = ACCESSIONS.findIndex((acc) => acc.id === accession.id);
-
-        updatedAccessions[index].quantity++;
-
-        setACCESSIONS(updatedAccessions);
-        const totalCost = updatedAccessions.reduce((acc, accession) => {
-            return acc + accession.quantity * accession.price;
-        }, 0);
-
-        props.onChangeSurcharge(totalCost)
+        const newQuantity = accession.quantity + 1;
+        updateQuantity(accession.id, newQuantity)
     }
+
+    useEffect(() => {
+        props.onChangeSurcharge(totalCost)
+    }, [totalCost, props])
 
     return (
         <ul className={classes.accessions} >
             {
-                ACCESSIONS.map((accession) => 
+                accessions.map((accession) => 
                     <li key={accession.id}>
                         <div className={classes.accessionName}>
                             <img src={accession.img} alt={accession.name} />
