@@ -44,6 +44,10 @@ const AccessionData = props => {
     }, [])
 
     useEffect(() => {
+        props.onSetPizzaDetails(pizzaDetails);
+    }, [pizzaDetails, props])
+
+    useEffect(() => {
         const sizeItems = sizeRef.current.querySelectorAll(`.${classes['pizza-option']}`);
         const bignessItems = bignessRef.current.querySelectorAll(`.${classes['pizza-option']}`);
 
