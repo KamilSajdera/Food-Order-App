@@ -1,42 +1,46 @@
-import { useEffect } from 'react';
 import useAccessionQuantity from '../../hooks/AccessionsAmountManagement';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import classes from './AccessionsAmount.module.css';
+import classes2 from '../AccessionStyles.module.css';
 
 import salat from '../../assets/salat.png';
 import cheese from '../../assets/cheese.png';
 import pickleSlices from '../../assets/pickleSlices.png';
+import { useEffect } from 'react';
 
 const AccessionsAmount = props => {
-
+    
     const initialAccessions = [
-            { 
-                id: 1,
-                img: salat, 
-                name: "Shredded Lettuce",
-                price: 0.25,
-                quantity: 0
-            },
-            { 
-                id: 2,
-                img: cheese, 
-                name: "Cheese",
-                price: 0.30,
-                quantity: 0
-            },
-            {
-                id: 3, 
-                img: pickleSlices, 
-                name: "Pickle Slices",
-                price: 0.10,
-                quantity: 0
-            }
-        ];
+        { 
+            id: 1,
+            img: salat, 
+            name: "Shredded Lettuce",
+            price: 0.25,
+            quantity: 0
+        },
+        { 
+            id: 2,
+            img: cheese, 
+            name: "Cheese",
+            price: 0.30,
+            quantity: 0
+        },
+        {
+            id: 3, 
+            img: pickleSlices, 
+            name: "Pickle Slices",
+            price: 0.10,
+            quantity: 0
+        }
+    ];
 
-    const { accessions, updateQuantity, totalCost } = useAccessionQuantity(initialAccessions);
+    const { accessions, updateQuantity, extraPay } = useAccessionQuantity(initialAccessions);
+    const activeAccessions = [...accessions].filter(acc => acc.quantity > 0)
+
+    const { currentBurger } = props
 
     const handleAmountMoreClick = (accession) => {
         const newQuantity = accession.quantity + 1
@@ -52,10 +56,21 @@ const AccessionsAmount = props => {
     }
 
     useEffect(() => {
-         props.onChangeSurcharge(totalCost) 
-    }, [totalCost, props])
+        props.onChangeExtraPay(extraPay)
+    }, [accessions, props, extraPay])
+   
+    const sendOrderHandler = () => 
+    {        
+        const burgerOrderData = { 
+            name: currentBurger.name,
+            price: currentBurger.price,
+            extraPay: extraPay,
+            activeAccessions: activeAccessions 
+        }     
+    }
 
     return (
+        <>
         <ul className={classes.accessions} >
             {
                 accessions.map((accession) => 
@@ -77,6 +92,8 @@ const AccessionsAmount = props => {
                 )
             }
         </ul> 
+        <button className={classes2.addToOrderBtn} onClick={sendOrderHandler}>Add to Order</button>
+        </>
     )
 };
 

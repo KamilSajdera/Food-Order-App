@@ -11,11 +11,11 @@ function useAccessionQuantity(initialAccessions) {
         setAccessions(updatedAccessions)
     }
 
-    const totalCost = accessions.reduce((acc, current) => {
+    const extraPay = accessions.reduce((acc, current) => {
         return acc + current.quantity * current.price;
     }, 0)
 
-    return { accessions, updateQuantity, totalCost }
+    return { accessions, updateQuantity, extraPay }
 
 } 
 
