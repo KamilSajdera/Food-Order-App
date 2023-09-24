@@ -30,22 +30,34 @@
     margin-top: 5px;
     border-radius: 10px;
     border: 1px solid #c9c9c9;
+    position: relative;
+    z-index: 1;
 }
 
-.active 
+.active::after 
 {
+    content: '';
+    position: absolute;
     background: #ffca40;
     border: 1px solid #ffca40;
     color: #2a2a2a;
     animation-name: fadeIn;
-    animation-duration: 0.5s;
+    animation-duration: 0.35s;
+    top: -1px;
+    left: 50%;
+    height: 100%;
+    z-index: -1;
+    border-radius: 10px;
+    width: 100%;
+    transform: translateX(-50%);
 }
+
 
 @keyframes fadeIn {
     from {
-        opacity: 0;
+        width: 0;
     }
     to {
-        opacity: 1;
+        width: 100%;
     }
 }
