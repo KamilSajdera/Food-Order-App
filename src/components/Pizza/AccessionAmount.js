@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import classes from './AccessionAmount.module.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -62,7 +60,10 @@ const AccessionsAmount = props => {
         }
     ];
 
-    const { accessions, updateQuantity, totalCost } = useAccessionQuantity(initialAccessions)
+    const { accessions, updateQuantity, extraPay } = useAccessionQuantity(initialAccessions);
+    const activeAccessions = [...accessions].filter(acc => acc.quantity > 0)
+
+    const extraPayToFixed = extraPay.toFixed(2)
 
     const handleAmountLessClick = accession => 
     {      
@@ -79,12 +80,8 @@ const AccessionsAmount = props => {
         updateQuantity(accession.id, newQuantity)
     }
 
-    useEffect(() => {
-        props.onChangeSurcharge(totalCost)
-    }, [totalCost, props])
-
     return (
-        <ul className={classes.accessions} >
+        <ul className={classes.accessions}>
             {
                 accessions.map((accession) => 
                     <li key={accession.id}>
@@ -103,6 +100,12 @@ const AccessionsAmount = props => {
                         </div>  
                     </li>
                 )
+            }
+            {
+                props.onSendAccessionsData({
+                    activeAccessions,
+                    extraPay: extraPayToFixed
+                })
             }
         </ul>
     )

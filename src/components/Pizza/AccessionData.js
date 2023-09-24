@@ -1,93 +1,89 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import classes from './AccessionData.module.css';
 
-import AccessionsAmount from './AccessionAmount'
+import AccessionsAmount from './AccessionAmount';
 
-const AccessionData = props => {
+const AccessionData = (props) => {
 
-    const sizeRef = useRef();
-    const bignessRef = useRef();
+    const pizzaDataRef = useRef({
+        size: 25,
+        dough: 'Traditional',
+        activeAccessions: [],
+        extraPay: 0,
+    });
 
-    const [pizzaDetails, setPizzaDetails] = useState({
-        size: "25cm",
-        dough: "Traditional"
-    })
+    const [activeSize, setActiveSize] = useState(25);
+    const [activeThickness, setActiveThickness] = useState("Traditional");
 
-    const changeSizeHandler = useCallback((value) => {
-        const sizeItems = sizeRef.current.querySelectorAll(`.${classes['pizza-option']}`); 
+  
+    const changeAccessionsData = (accData) => {
+        pizzaDataRef.current = {
+        ...pizzaDataRef.current,
+        activeAccessions: accData.activeAccessions,
+        extraPay: accData.extraPay,
+        };
 
-        sizeItems.forEach((item) => {
-            item.classList.remove(classes.active)
-            if(item.textContent === value) {
-                item.classList.add(classes.active)
-                setPizzaDetails(prev => ({
-                    ...prev,
-                    size: item.textContent
-                }))
-            }
-        })
-    }, [])
+        setTimeout(() => {
+            props.onSendPizzaDetails(pizzaDataRef.current);
+        }, 50)
+    };
 
-    const changeBignessHandler = useCallback((value) => {
-        const bignessItems = bignessRef.current.querySelectorAll(`.${classes['pizza-option']}`); 
+    const handleSize = (value) => {
+        setActiveSize(value)
+        pizzaDataRef.current = {
+            ...pizzaDataRef.current,
+            size: value
+        };
+        props.onSendPizzaDetails(pizzaDataRef.current);
+    }
 
-        bignessItems.forEach((item) => {
-            item.classList.remove(classes.active)
-            if(item.textContent === value) {
-                item.classList.add(classes.active)
-                setPizzaDetails(prev => ({
-                    ...prev,
-                    dough: item.textContent
-                }))
-            }
-        })
-    }, [])
+    const handleThickness = (value) => {
+        setActiveThickness(value)
 
-    useEffect(() => {
-        props.onSetPizzaDetails(pizzaDetails);
-    }, [pizzaDetails, props])
+        pizzaDataRef.current = {
+            ...pizzaDataRef.current,
+            dough: value
+        };
 
-    useEffect(() => {
-        const sizeItems = sizeRef.current.querySelectorAll(`.${classes['pizza-option']}`);
-        const bignessItems = bignessRef.current.querySelectorAll(`.${classes['pizza-option']}`);
-
-        sizeItems.forEach(sizeItem => {
-          sizeItem.addEventListener('click', () => changeSizeHandler(sizeItem.textContent))  
-        });
-
-        bignessItems.forEach(bigItem => {
-            bigItem.addEventListener('click', () => changeBignessHandler(bigItem.textContent))  
-          });
-
-        return () => {
-            sizeItems.forEach(sizeItem => {
-                sizeItem.removeEventListener('click', null)  
-              });  
-
-            bignessItems.forEach(bigItem => {
-                bigItem.removeEventListener('click', null)  
-              });  
-        }
-    }, [changeBignessHandler, changeSizeHandler])
-
-    const changeSurchargeHandler = value => props.onChangeSurcharge(value)
+        props.onSendPizzaDetails(pizzaDataRef.current);
+    }
+    
+    const classNameOptionSize = (value) => {
+        return `${classes['pizza-option']} ${activeSize === value ? classes.active : ''}`   
+    }
+    
+    const classNameOptionThickness = (value) => {
+        return `${classes['pizza-option']} ${activeThickness === value ? classes.active : ''}`   
+    }
 
     return (
         <div className={classes.accessionsDetails}>
-            <div className={classes.pizzaOptions} ref={sizeRef}>
-                <h4>Size</h4>
-                <div className={`${classes['pizza-option']} ${classes.active}`}>25cm</div>
-                <div className={classes['pizza-option']}>35cm</div>
-                <div className={classes['pizza-option']}>40cm</div>
-            </div>
-            <div className={classes.pizzaOptions} ref={bignessRef}>
-                <h4>Type of dough</h4>
-                <div className={`${classes['pizza-option']} ${classes.active}`} style={{width: '48%'}}>Traditional</div>
-                <div className={classes['pizza-option']} style={{width: '48%'}}>Thin</div>
-            </div>
-            <AccessionsAmount onChangeSurcharge={changeSurchargeHandler}/>
+        <div className={classes.pizzaOptions}>
+            <h4>Size</h4>
+            <div 
+                className={classNameOptionSize(25)}
+                onClick={() => handleSize(25) }>25cm</div>
+            <div 
+                className={classNameOptionSize(35)} 
+                onClick={() => handleSize(35) }>35cm</div>
+            <div 
+                className={classNameOptionSize(40)} 
+                onClick={() => handleSize(40) }>40cm</div>
         </div>
-    )
+        <div className={classes.pizzaOptions}>
+            <h4>Type of dough</h4>
+            <div 
+                className={classNameOptionThickness("Traditional")} 
+                style={{ width: '48%' }}
+                onClick={() => handleThickness("Traditional")}>Traditional</div>
+            <div 
+                className={classNameOptionThickness("Thin")}
+                style={{ width: '48%' }}
+                onClick={() => handleThickness("Thin")}>Thin</div>
+        </div>
+        <AccessionsAmount onSendAccessionsData={changeAccessionsData} />
+        </div>
+    );
 };
 
-export default AccessionData
+export default AccessionData;
