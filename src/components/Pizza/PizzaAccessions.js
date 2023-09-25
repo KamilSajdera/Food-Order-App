@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import isEqual from 'lodash/isEqual';
 
 import AccessionData from './AccessionData';
-import classes from '../AccessionStyles.module.css';
+
+import AccessionsWrapper from '../../ui/AccessionsWrapper';
+import Button from '../../ui/Button';
 
 const PizzaAccessions = props => {
 
     const { pizzaData } = props;
+    
     const [ pizzaSummary, setPizzaSummary ] = useState({
         name: pizzaData.name,
         price: pizzaData.price,
@@ -18,10 +19,6 @@ const PizzaAccessions = props => {
         extraPay: 0
     })  
     
-    const closeAccessionsHandler = () => {
-        props.onCloseAccessions();
-    }
-
     const pizzaDetailsHandler = pizzaItem => 
     {
         if (!isEqual(pizzaItem, pizzaSummary)) {
@@ -56,18 +53,13 @@ const PizzaAccessions = props => {
     }
 
     return (
-        <section className={classes.accessionWrapper}>
-            <div className={classes.accessionContainer}>
-                <FontAwesomeIcon icon={faWindowClose} className={classes.close} onClick={closeAccessionsHandler}/>
-                <div className={classes.itemDetails}>
-                <img src={pizzaData.img} alt={pizzaData.name} />
-                    <h1>{pizzaData.name}</h1>
-                    <span className={classes.price}>{`$${pizzaSummary.price.toFixed(2)} ($${pizzaSummary.extraPay})`}</span>
-                </div>
-                <AccessionData onSendPizzaDetails={pizzaDetailsHandler} />
-                <button className={classes.addToOrderBtn} onClick={sendOrderPizza}>Add to Order</button>
-            </div>
-        </section>
+        <AccessionsWrapper onCloseAccessions={() => props.onCloseAccessions()}>
+            <img src={pizzaData.img} alt={pizzaData.name} />
+            <h1>{pizzaData.name}</h1>
+            <span>{`$${pizzaSummary.price.toFixed(2)} ($${pizzaSummary.extraPay})`}</span>
+            <AccessionData onSendPizzaDetails={pizzaDetailsHandler} />
+            <Button onClick={sendOrderPizza}>Add to Order</Button>
+        </AccessionsWrapper>   
     )
 };
 
