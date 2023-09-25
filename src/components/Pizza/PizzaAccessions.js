@@ -18,6 +18,12 @@ const PizzaAccessions = props => {
         activeAccessions: [],
         extraPay: 0
     })  
+
+    const pizzaPriceMap = {
+        25: 0,
+        35: 7,
+        40: 12
+    }
     
     const pizzaDetailsHandler = pizzaItem => 
     {
@@ -25,26 +31,8 @@ const PizzaAccessions = props => {
             setPizzaSummary((prev) => ({
                 ...prev,
                 ...pizzaItem,
+                price: pizzaData.price + pizzaPriceMap[pizzaItem.size]
             }))
-
-            if(pizzaItem.size === 25) {
-                setPizzaSummary((prev) => ({
-                    ...prev,
-                    price: pizzaData.price
-                }))
-            }
-            if(pizzaItem.size === 35) {
-                setPizzaSummary((prev) => ({
-                    ...prev,
-                    price: pizzaData.price + 7
-                }))
-            }
-            if(pizzaItem.size === 40) {
-                setPizzaSummary((prev) => ({
-                    ...prev,
-                    price: pizzaData.price + 12
-                }))
-            }
         }
     }
 
