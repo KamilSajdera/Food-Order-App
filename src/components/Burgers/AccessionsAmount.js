@@ -1,15 +1,14 @@
+import { useEffect } from 'react';
 import useAccessionQuantity from '../../hooks/AccessionsAmountManagement';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import classes from './AccessionsAmount.module.css';
-import classes2 from '../AccessionStyles.module.css';
 
 import salat from '../../assets/salat.png';
 import cheese from '../../assets/cheese.png';
 import pickleSlices from '../../assets/pickleSlices.png';
-import { useEffect } from 'react';
 
 const AccessionsAmount = props => {
     
@@ -56,19 +55,16 @@ const AccessionsAmount = props => {
     }
 
     useEffect(() => {
-        props.onChangeExtraPay(extraPay)
-    }, [accessions, props, extraPay])
-   
-    const sendOrderHandler = () => 
-    {        
         const burgerOrderData = { 
             name: currentBurger.name,
             price: currentBurger.price,
             extraPay: extraPay,
             activeAccessions: activeAccessions 
-        }     
-    }
-
+        }  
+        
+        props.onSendBurgerDetails(burgerOrderData)
+    }, [props, activeAccessions, currentBurger, extraPay])
+   
     return (
         <>
         <ul className={classes.accessions} >
@@ -92,7 +88,6 @@ const AccessionsAmount = props => {
                 )
             }
         </ul> 
-        <button className={classes2.addToOrderBtn} onClick={sendOrderHandler}>Add to Order</button>
         </>
     )
 };

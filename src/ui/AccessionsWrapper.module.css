@@ -99,12 +99,12 @@
     font-size: 1.0rem;
 }
 
-.price
+.itemDetails span
 {
     color: #ffcb44;
     font-weight: 600;
     padding-top: 20px;
-    padding-bottom: 45px;
+    padding-bottom: 35px;
     font-size: 1.2rem;
 }
 

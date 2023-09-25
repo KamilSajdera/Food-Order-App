@@ -2,7 +2,7 @@
 {
     list-style-type: none;
     width: 100%;
-    padding: 0 5px;
+    padding: 0 20px;
 }
 
 .accessions li 
@@ -23,7 +23,7 @@
 
 .accessionName img 
 {
-    width: 50px;
+    width: 50px!important;
 }
 
 .accessionName h3 
@@ -35,9 +35,10 @@
 .amountContainer 
 {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
     width: 45%;
+    gap: 30px;
 }
 
 .amountLess,

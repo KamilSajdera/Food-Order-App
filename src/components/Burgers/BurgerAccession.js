@@ -1,36 +1,40 @@
 import { useState } from 'react';
-import classes from '../AccessionStyles.module.css';
+import isEqual from 'lodash/isEqual';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import AccessionsAmount from './AccessionsAmount';
+import AccessionsWrapper from '../../ui/AccessionsWrapper';
+import Button from '../../ui/Button';
 
 const BurgerAccession = props => {
 
-    const [ displayExtraPay, setDisplayExtraPay ] = useState(0)
     const { currentBurger } = props;
 
-    const closeAccessionsWrapper = () => {
-        props.onCloseAccessions()
-    }
+    const [ burgerSummary, setBurgerSummary ] = useState({
+        activeAccessions: [],
+        extraPay: 0,
+        name: currentBurger.name,
+        price: currentBurger.price
+    })
 
     const changeExtraPayHandler = value => {
-        setDisplayExtraPay(value)
+        if(!isEqual(value, burgerSummary))
+            setBurgerSummary(value)
+    }
+
+    const sendOrderHandler = () => 
+    {               
+        /// Logic of adding an order to the cart soon...
     }
 
     return (
-        <section className={classes.accessionWrapper}>
-            <div className={classes.accessionContainer}>
-                <FontAwesomeIcon icon={faWindowClose} className={classes.close} onClick={closeAccessionsWrapper}/> 
-                <div className={classes.itemDetails}>
-                    <img src={currentBurger.img} alt={currentBurger.name} />
-                    <h1>{currentBurger.name}</h1>
-                    <p>{currentBurger.weight}</p>
-                    <span className={classes.price}>{`$${currentBurger.price.toFixed(2)} ($${displayExtraPay.toFixed(2)})`}</span>
-                </div>
-                <AccessionsAmount currentBurger={currentBurger} onChangeExtraPay={changeExtraPayHandler} />
-            </div>
-        </section>
+        <AccessionsWrapper onCloseAccessions={ () => props.onCloseAccessions()}>
+            <img src={currentBurger.img} alt={currentBurger.name} />
+            <h1>{currentBurger.name}</h1>
+            <p>{currentBurger.weight}</p>
+            <span>{`$${currentBurger.price.toFixed(2)} ($${burgerSummary.extraPay.toFixed(2)})`}</span>
+            <AccessionsAmount currentBurger={currentBurger} onSendBurgerDetails={changeExtraPayHandler} />
+            <Button onClick={sendOrderHandler}>Add to Order</Button>
+        </AccessionsWrapper>  
     )
 };
 
