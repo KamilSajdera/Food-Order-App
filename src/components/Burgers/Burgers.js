@@ -1,18 +1,14 @@
-import stylesPage from '../PageStyles.module.css';
+import MainWrapper from '../../ui/MainWrapper';
 import BurgersItems from './BurgersItems';
 
 import logo from '../../assets/burger-page-header.png';
 
 const Burgers = () => {
     return (
-        <section className={stylesPage.mainWrapper}>
-            <header>
-                <h1>Burgers</h1>
-                <img src={logo} alt='burger' />
-            </header>
+        <MainWrapper title="Burgers" logoImg={logo}>
             <BurgersItems />
-        </section>
+        </MainWrapper>
     )
 }
 
-export default Burgers
+export default Burgers;
