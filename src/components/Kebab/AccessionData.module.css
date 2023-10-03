@@ -1,0 +1,60 @@
+.burgerOptions 
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.burgerOptions:nth-child(2)
+{
+    margin: 25px 0 40px 0;;
+}
+
+.burgerOptions h4 
+{
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.burger-option 
+{
+    width: 32%;
+    padding: 8px 0;
+    text-align: center;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #c9c9c9;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 25px;
+}
+
+.active::after 
+{
+    content: '';
+    position: absolute;
+    background: #ffca40;
+    border: 1px solid #ffca40;
+    color: #2a2a2a;
+    animation-name: fadeIn;
+    animation-duration: 0.35s;
+    top: -1px;
+    left: 50%;
+    height: 100%;
+    z-index: -1;
+    border-radius: 10px;
+    width: 100%;
+    transform: translateX(-50%);
+}
+
+
+@keyframes fadeIn {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}

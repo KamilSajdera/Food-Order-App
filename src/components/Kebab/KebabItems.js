@@ -92,11 +92,11 @@ const KebabItems = () => {
                         <h3>{kebabItem.name}</h3>
                         <div className={classes.priceItem}>
                             <div className={classes.price}>${kebabItem.price1.toFixed(2)}</div>
-                            <div className={classes.size}>small</div>
+                            <div className={classes.size}>normal</div>
                         </div>
                         <div className={classes.priceItem}>
                             <div className={classes.price}>${kebabItem.price2.toFixed(2)}</div>
-                            <div className={classes.size}>middle</div>
+                            <div className={classes.size}>big</div>
                         </div>
                         <div className={classes.priceItem}>
                             <div className={classes.price}>${kebabItem.price3.toFixed(2)}</div>
