@@ -4,6 +4,7 @@ import isEqual from 'lodash/isEqual';
 import AccessionsAmount from './AccessionsAmount';
 import AccessionsWrapper from '../../ui/AccessionsWrapper';
 import Button from '../../ui/Button';
+import InfoAccessions from '../../ui/InfoAccessions';
 
 const BurgerAccession = props => {
 
@@ -16,18 +17,26 @@ const BurgerAccession = props => {
         price: currentBurger.price
     })
 
+    const [isShowInfo, setIsShowInfo] = useState(false);
+    const infoMessage = `Each accession is in the basic version of the burger (1x). 
+                     You can choose whether you want something more by clicking the plus button. 
+                     Important! You cannot remove the add-on.`
+
     const changeExtraPayHandler = value => {
         if(!isEqual(value, burgerSummary))
             setBurgerSummary(value)
     }
-
+    
+    const showInfoHandler = () => setIsShowInfo(!isShowInfo)      
+    
     const sendOrderHandler = () => 
     {               
         /// Logic of adding an order to the cart soon...
     }
 
     return (
-        <AccessionsWrapper onCloseAccessions={ () => props.onCloseAccessions()}>
+        <AccessionsWrapper onCloseAccessions={ () => props.onCloseAccessions()} onShowInfo={showInfoHandler}>
+            { isShowInfo && <InfoAccessions message={infoMessage} /> }
             <img src={currentBurger.img} alt={currentBurger.name} />
             <h1>{currentBurger.name}</h1>
             <p>{currentBurger.weight}</p>

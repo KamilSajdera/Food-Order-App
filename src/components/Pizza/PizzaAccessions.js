@@ -5,6 +5,7 @@ import AccessionData from './AccessionData';
 
 import AccessionsWrapper from '../../ui/AccessionsWrapper';
 import Button from '../../ui/Button';
+import InfoAccessions from '../../ui/InfoAccessions';
 
 const PizzaAccessions = props => {
 
@@ -24,6 +25,10 @@ const PizzaAccessions = props => {
         35: 7,
         40: 12
     }
+
+    const [isShowInfo, setIsShowInfo] = useState(false);
+    const infoMessage = `Some of the accessions are included in the pizza and aren't included in the quantity here. 
+                         To find out which ones, read pizza's description and look its photo.`
     
     const pizzaDetailsHandler = pizzaItem => 
     {
@@ -36,12 +41,15 @@ const PizzaAccessions = props => {
         }
     }
 
+    const showInfoHandler = () => setIsShowInfo(!isShowInfo)  
+
     const sendOrderPizza = () => {  
        /// Logic of adding an order to the cart soon...
     }
 
     return (
-        <AccessionsWrapper onCloseAccessions={() => props.onCloseAccessions()}>
+        <AccessionsWrapper onCloseAccessions={() => props.onCloseAccessions()} onShowInfo={showInfoHandler}>
+            { isShowInfo && <InfoAccessions message={infoMessage} />}
             <img src={pizzaData.img} alt={pizzaData.name} />
             <h1>{pizzaData.name}</h1>
             <span>{`$${pizzaSummary.price.toFixed(2)} ($${pizzaSummary.extraPay})`}</span>

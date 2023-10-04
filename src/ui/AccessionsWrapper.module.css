@@ -73,6 +73,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 35px;
 }
 
 .itemDetails img 
@@ -160,4 +161,14 @@
     {
         width: 200px;
     }
+}
+
+.info 
+{
+    font-size: 2rem;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #3d3d93;
+    cursor: pointer;
 }

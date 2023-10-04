@@ -2,6 +2,7 @@ import { useState } from "react";
 import AccessionsWrapper from "../../ui/AccessionsWrapper";
 import AccessionData from './AccessionData';
 import Button from "../../ui/Button";
+import InfoAccessions from "../../ui/InfoAccessions";
 
 const KebabAccession = props => {
 
@@ -15,11 +16,22 @@ const KebabAccession = props => {
 
     const [ error, setError ] = useState(false)
 
-    const kebabDataHandler = value => 
-    {
-        setKebabData(value)
-    }
+    const [isShowInfo, setIsShowInfo] = useState(false);
+    const infoMessage = `To complete order and add to cart, you have to choose all the bellow options!`
 
+    const kebabDataHandler = value => setKebabData(value)
+
+    const showInfoHandler = () => setIsShowInfo(!isShowInfo)  
+    
+    const displaingPrice = () => {
+        if(kebabData.size === "normal")
+            return currentKebab.price1;
+        if(kebabData.size === "big")
+            return currentKebab.price2;
+        if(kebabData.size === "extra")
+            return currentKebab.price3;
+    }
+    
     const sendOrderHandler = () => {
         for(let key in kebabData)
         {
@@ -29,7 +41,6 @@ const KebabAccession = props => {
                 return; 
             }
         }
-
         const kebabObject = {
             name: currentKebab.name,
             img: currentKebab.img,
@@ -40,17 +51,10 @@ const KebabAccession = props => {
         /// soon...
     }
 
-    const displaingPrice = () => {
-        if(kebabData.size === "normal")
-            return currentKebab.price1;
-        if(kebabData.size === "big")
-            return currentKebab.price2;
-        if(kebabData.size === "extra")
-            return currentKebab.price3;
-    }
 
     return (
-        <AccessionsWrapper onCloseAccessions={ () => props.onCloseAccessions()}>
+        <AccessionsWrapper onCloseAccessions={ () => props.onCloseAccessions()} onShowInfo={showInfoHandler}>
+            { isShowInfo && <InfoAccessions message={infoMessage} />}
             <img src={currentKebab.img} alt={currentKebab.name} 
                 style={{'borderRadius': '50%', 'aspectRatio': '1', 'objectFit': 'cover'}} />
             <h1>{currentKebab.name}</h1>
