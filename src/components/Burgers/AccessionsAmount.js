@@ -6,9 +6,9 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import classes from './AccessionsAmount.module.css';
 
-import salat from '../../assets/salat.png';
-import cheese from '../../assets/cheese.png';
-import pickleSlices from '../../assets/pickleSlices.png';
+import salat from '../../assets/burger/salat.png';
+import cheese from '../../assets/burger/cheese.png';
+import pickleSlices from '../../assets/burger/pickleSlices.png';
 
 const AccessionsAmount = props => {
     

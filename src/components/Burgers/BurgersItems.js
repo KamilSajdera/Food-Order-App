@@ -2,12 +2,12 @@ import { useRef, useEffect, useState } from 'react';
 
 import classes from './BurgersItems.module.css'
 
-import cheeseBurgerImg from '../../assets/cheeseburger.png';
-import chickenBurgerImg from '../../assets/chickenDeluxe.png';
-import hamburgerImg from '../../assets/hamburger.png';
-import bigjohnImg from '../../assets/bigjohn-burger.png';
-import spicyChickenImg from '../../assets/spicychicken.avif';
-import superstarImg from '../../assets/superstar.png';
+import cheeseBurgerImg from '../../assets/burger/cheeseburger.png';
+import chickenBurgerImg from '../../assets/burger/chickenDeluxe.png';
+import hamburgerImg from '../../assets/burger/hamburger.png';
+import bigjohnImg from '../../assets/burger/bigjohn-burger.png';
+import spicyChickenImg from '../../assets/burger/spicychicken.avif';
+import superstarImg from '../../assets/burger/superstar.png';
 
 import BurgerAccession from './BurgerAccession';
 
@@ -61,8 +61,6 @@ const BurgersItems = () =>
     const itemsRef = useRef(null);
     const [showAccession, setShowAccession] = useState(false);
     const [currentBurger, setCurrentBurger] = useState(null);
-
-   
 
     useEffect(() => {
         const burgerItems = itemsRef.current.querySelectorAll(`.${classes['burger-item']}`);

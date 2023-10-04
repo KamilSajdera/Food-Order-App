@@ -1,7 +1,7 @@
 import MainWrapper from '../../ui/MainWrapper';
 import KebabItems from './KebabItems';
 
-import logo from '../../assets/kebab-page-header.png';
+import logo from '../../assets/kebab/kebab-page-header.png';
 
 const Kebabs = () => {
     return (
