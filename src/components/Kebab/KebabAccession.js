@@ -66,7 +66,8 @@ const KebabAccession = props => {
                 background: "red",
                 color: "#fff",
                 textAlign: "center",
-                borderRadius: "10px"
+                borderRadius: "10px",
+                filter: "drop-shadow(0px 4px 5px black)"
             }}>Complete all data!</div>}
             <Button onClick={sendOrderHandler}>Add to Order</Button>
             

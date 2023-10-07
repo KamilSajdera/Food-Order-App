@@ -91,6 +91,15 @@ const AccessionsHotdog = props => {
                 <div className={classesOptionSauce("belgian")} onClick={() => setHotdogData("setSauce", "belgian")}>belgian</div>        
                 <div className={classesOptionSauce("BBQ")} onClick={() => setHotdogData("setSauce", "BBQ")}>BBQ</div>        
             </div>
+            { error && <div style={{
+                width: "80%",
+                padding: "10px 20px",
+                background: "red",
+                color: "#fff",
+                textAlign: "center",
+                borderRadius: "10px",
+                filter: "drop-shadow(0px 4px 5px black)"
+            }}>Complete all data!</div>}
             <Button onClick={sendOrderHandler}>Add to Order</Button>
         </AccessionsWrapper>
     )
