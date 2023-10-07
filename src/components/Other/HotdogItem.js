@@ -1,38 +1,24 @@
-import classes from './OtherItems.module.css';
+import { useState } from 'react';
+import AccessionsHotdog from './AccessionsHotdog';
 
+import classes from './OtherItems.module.css';
 import hotdogImg from '../../assets/other/hotdog.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const HotdogItem = () => {
+
+    const [showAccessions, setShowAccessions] = useState(false);
+    const closeAccessionsHandler = () => setShowAccessions(false)
+
     return (
-        <div className={classes['other-item']}>
+        <>
+        <div className={classes['other-item']} onClick={() => {setShowAccessions(true)}}>
                 <img src={hotdogImg} alt="hotdog" />
                 <h3>HotDog</h3>
-                <div className={classes['fries-option']}>
-                    <div>Small (200g)</div>
-                    <div className={classes.price}>$2.30</div>
-                    <div className={classes.friesAdd}>
-                        <FontAwesomeIcon icon={faPlus} />
-                    </div>
-                </div>
-
-                <div className={classes['fries-option']}>
-                    <div>Mid (300g)</div>
-                    <div className={classes.price}>$4.50</div>
-                    <div className={classes.friesAdd}>
-                        <FontAwesomeIcon icon={faPlus} />
-                    </div>
-                </div>
-
-                <div className={classes['fries-option']}>
-                    <div>Small (400g)</div>
-                    <div className={classes.price}>$6.20</div>
-                    <div className={classes.friesAdd}>
-                        <FontAwesomeIcon icon={faPlus} />
-                    </div>
-                </div>
-            </div>
+                <p className={classes.description}>A wide selection of ingredients so your hotdog will taste really good.</p>
+        
+        </div>
+        { showAccessions && <AccessionsHotdog onCloseAccessions={closeAccessionsHandler} />}
+        </>
     )
 };
 

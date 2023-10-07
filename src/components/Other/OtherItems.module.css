@@ -2,7 +2,6 @@
 {
     width: 100%;
     margin-top: 30px;
-    text-align: center;
 }
 
 .other-item 
@@ -12,6 +11,14 @@
     border-radius: 10px;
     box-shadow: 0px 0px 18px -7px #ccc;
     margin-top: 30px;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+.other-item:first-child 
+{
+    cursor: default;
 }
 
 .other-item img 
@@ -59,8 +66,66 @@
     margin-left: 15%;
     padding: 6px 0;
     border-radius: 10px;
+    cursor: pointer;
 }
 
+.description 
+{
+    width: 80%;
+    color: #858585;
+    padding-top: 25px;
+    letter-spacing: 0.7px;
+    text-align: center;
+    margin: auto;
+}
+
+.optionItems
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    margin-top: 30px;
+}
+
+.optionItems h4 
+{
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.option-item 
+{
+    width: 32%;
+    padding: 8px 0;
+    text-align: center;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #c9c9c9;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.active::after 
+{
+    content: '';
+    position: absolute;
+    background: #ffca40;
+    border: 1px solid #ffca40;
+    color: #2a2a2a;
+    animation-name: fadeIn;
+    animation-duration: 0.35s;
+    top: -1px;
+    left: 50%;
+    height: 100%;
+    z-index: -1;
+    border-radius: 10px;
+    width: 100%;
+    transform: translateX(-50%);
+}
 
 @media screen and (min-width: 650px)
 {
@@ -83,6 +148,11 @@
     {
         width: 32%;
     }
+
+    .description 
+    {
+        padding-top: 40px;
+    }
 }
 
 @media screen and (min-width: 1350px)
@@ -91,5 +161,14 @@
     {
         width: 31%;
         padding-inline: 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
     }
 }
