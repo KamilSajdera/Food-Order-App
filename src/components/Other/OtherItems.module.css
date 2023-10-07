@@ -60,3 +60,36 @@
     padding: 6px 0;
     border-radius: 10px;
 }
+
+
+@media screen and (min-width: 650px)
+{
+    .other-item 
+    {
+        width: 75%;
+        margin: 30px auto;
+    }
+}
+
+@media screen and (min-width: 1023px)
+{
+    .itemsWrapper 
+    {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .other-item 
+    {
+        width: 32%;
+    }
+}
+
+@media screen and (min-width: 1350px)
+{
+    .other-item 
+    {
+        width: 31%;
+        padding-inline: 20px;
+    }
+}
