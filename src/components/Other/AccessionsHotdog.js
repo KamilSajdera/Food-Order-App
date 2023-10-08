@@ -6,7 +6,7 @@ import classes from './OtherItems.module.css';
 import logo from '../../assets/other/hotdog.png';
 
 const initialData = {
-    size: null,
+    size: "normal",
     bread: null,
     sauce: null,
 };
@@ -73,11 +73,13 @@ const AccessionsHotdog = props => {
         <AccessionsWrapper onCloseAccessions={() => props.onCloseAccessions()}>
             <img src={logo} alt="hotdog" style={{'borderRadius': '50%', 'aspectRatio': '1', 'objectFit': 'cover'}}/>
             <h1>Hotdog</h1>
+            <h1 className={classes.price} style={{paddingTop: "20px"}}>
+                { hotdogData.size === "normal" ? "$2.00" : "$3.50"}
+            </h1>
             <div className={classes.optionItems}>
                 <h4>Size</h4>
-                <div className={classesOptionSize("small")} onClick={() => setHotdogData("setSize", "small")}>small</div>
-                <div className={classesOptionSize("mid")} onClick={() => setHotdogData("setSize", "mid")}>mid</div>
-                <div className={classesOptionSize("big")} onClick={() => setHotdogData("setSize", "big")}>big</div>
+                <div className={classesOptionSize("normal")} onClick={() => setHotdogData("setSize", "normal")} style={{width: '48%'}}>normal</div>
+                <div className={classesOptionSize("big")} onClick={() => setHotdogData("setSize", "big")} style={{width: '48%'}}>big</div>
 
                 <h4>Bread</h4>
                 <div className={classesOptionBread("light")} onClick={() => setHotdogData("setBread", "light")} style={{width: '48%'}}>Light</div>
