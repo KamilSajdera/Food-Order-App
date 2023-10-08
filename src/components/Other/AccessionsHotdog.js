@@ -1,6 +1,7 @@
 import { useReducer, useState } from "react";
 import AccessionsWrapper from "../../ui/AccessionsWrapper";
 import Button from '../../ui/Button';
+import InfoAccessions from '../../ui/InfoAccessions';
 
 import classes from './OtherItems.module.css';
 import logo from '../../assets/other/hotdog.png';
@@ -41,9 +42,12 @@ const reducer = (state, action) => {
 const AccessionsHotdog = props => {
 
     const [hotdogData, dispatch] = useReducer(reducer, initialData);
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
+    const [isShowInfo, setIsShowInfo] = useState(false);
 
     const setHotdogData = (type, value) => dispatch({type, value})
+
+    const infoMessage = 'To complete order and add to cart, you have to choose all the bellow options!';
 
     const sendOrderHandler = () => {
         for(let key in hotdogData) {
@@ -69,8 +73,11 @@ const AccessionsHotdog = props => {
         return `${classes['option-item']} ${ hotdogData.sauce === value ? classes.active : ''}`;
     }
 
+    const showInfoHandler = () => setIsShowInfo(!isShowInfo)  
+
     return (
-        <AccessionsWrapper onCloseAccessions={() => props.onCloseAccessions()}>
+        <AccessionsWrapper onCloseAccessions={() => props.onCloseAccessions()} onShowInfo={showInfoHandler}>
+            { isShowInfo && <InfoAccessions message={infoMessage} /> }
             <img src={logo} alt="hotdog" style={{'borderRadius': '50%', 'aspectRatio': '1', 'objectFit': 'cover'}}/>
             <h1>Hotdog</h1>
             <h1 className={classes.price} style={{paddingTop: "20px"}}>
