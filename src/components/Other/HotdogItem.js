@@ -11,7 +11,7 @@ const HotdogItem = () => {
 
     return (
         <>
-        <div className={classes['other-item']} onClick={() => {setShowAccessions(true)}}>
+        <div className={classes['other-item']} style={{cursor: "pointer"}} onClick={() => {setShowAccessions(true)}}>
                 <img src={hotdogImg} alt="hotdog" />
                 <h3>HotDog</h3>
                 <div className={classes.priceItems}>
@@ -21,7 +21,7 @@ const HotdogItem = () => {
                 <p className={classes.description}>A wide selection of ingredients so your hotdog will taste really good.</p>
         
         </div>
-        { showAccessions && <AccessionsHotdog onCloseAccessions={closeAccessionsHandler} />}
+        { showAccessions && <AccessionsHotdog onCloseAccessions={closeAccessionsHandler}/>}
         </>
     )
 };
