@@ -8,6 +8,7 @@ import Burgers from "./components/Burgers/Burgers";
 import Pizzas from './components/Pizza/Pizza';
 import Kebabs from "./components/Kebab/Kebab";
 import Other from "./components/Other/Other";
+import Drinks from './components/Drinks/Drinks';
 
 const router = createBrowserRouter([
   { path: '/', element: <RootPage />, children: [
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     { path: '/pizza', element: <Pizzas /> },
     { path: '/kebab', element: <Kebabs/> },
     { path: '/other', element: <Other /> },
+    { path: '/drinks', element: <Drinks /> },
   ], errorElement: <ErrorPage /> }
  
 ])
