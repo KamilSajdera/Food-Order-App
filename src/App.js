@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Provider } from 'react-redux'
 
 import RootPage from "./routes/RootPage";
 import HomePage from "./routes/HomePage";
@@ -9,6 +10,8 @@ import Pizzas from './components/Pizza/Pizza';
 import Kebabs from "./components/Kebab/Kebab";
 import Other from "./components/Other/Other";
 import Drinks from './components/Drinks/Drinks';
+
+import store from "./store";
 
 const router = createBrowserRouter([
   { path: '/', element: <RootPage />, children: [
@@ -24,7 +27,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router}></RouterProvider>
+      <Provider store={store}>
+        <RouterProvider router={router}></RouterProvider>
+      </Provider>
     </>
   )
 }
