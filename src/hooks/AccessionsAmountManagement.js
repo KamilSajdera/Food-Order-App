@@ -3,13 +3,15 @@ import { useState } from 'react';
 function useAccessionQuantity(initialAccessions) {
     const [accessions, setAccessions] = useState(initialAccessions);
 
-    const updateQuantity = (accessionId, amout) => {
-        const updatedAccessions = [...accessions]
-        const index = updatedAccessions.findIndex(item => item.id === accessionId);
-
-        updatedAccessions[index].quantity = amout;
-        setAccessions(updatedAccessions)
-    }
+    const updateQuantity = (accessionId, amount) => {
+        setAccessions(prevAcc => {
+            return prevAcc.map(acc => {
+                if(acc.id === accessionId)
+                    return {...acc, quantity: amount}
+                return acc
+            })
+        })
+    };
 
     const extraPay = accessions.reduce((acc, current) => {
         return acc + current.quantity * current.price;
