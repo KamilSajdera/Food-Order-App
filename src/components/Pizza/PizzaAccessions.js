@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 
 import AccessionData from './AccessionData';
@@ -6,6 +7,8 @@ import AccessionData from './AccessionData';
 import AccessionsWrapper from '../../ui/AccessionsWrapper';
 import Button from '../../ui/Button';
 import InfoAccessions from '../../ui/InfoAccessions';
+
+import { cartActions } from '../../store/cart-slice';
 
 const PizzaAccessions = props => {
 
@@ -26,6 +29,8 @@ const PizzaAccessions = props => {
         40: 12
     }
 
+    const dispatch = useDispatch()
+
     const [isShowInfo, setIsShowInfo] = useState(false);
     const infoMessage = `Some of the accessions are included in the pizza and aren't included in the quantity here. 
                          To find out which ones, read pizza's description and look its photo.`
@@ -44,7 +49,7 @@ const PizzaAccessions = props => {
     const showInfoHandler = () => setIsShowInfo(!isShowInfo)  
 
     const sendOrderPizza = () => {  
-       /// Logic of adding an order to the cart soon...
+       dispatch(cartActions.addItemToCart(pizzaSummary))
     }
 
     return (

@@ -1,23 +1,30 @@
 import { useState } from "react";
-import AccessionsWrapper from "../../ui/AccessionsWrapper";
+import { useDispatch } from "react-redux";
+
 import AccessionData from './AccessionData';
+
+import AccessionsWrapper from "../../ui/AccessionsWrapper";
 import Button from "../../ui/Button";
 import InfoAccessions from "../../ui/InfoAccessions";
+
+import { cartActions } from "../../store/cart-slice";
 
 const KebabAccession = props => {
 
     const { currentKebab } = props;
-    const [ kebabData, setKebabData ] = useState({
+    const [kebabData, setKebabData] = useState({
         size: "normal",
         meat: null,
         sauce: null,
         doubleMeat: null
     });
 
-    const [ error, setError ] = useState(false)
+    const [error, setError] = useState(false)
 
     const [isShowInfo, setIsShowInfo] = useState(false);
-    const infoMessage = `To complete order and add to cart, you have to choose all the bellow options!`
+    const infoMessage = `To complete order and add to cart, you have to choose all the bellow options!`;
+
+    const dispatch = useDispatch();
 
     const kebabDataHandler = value => setKebabData(value)
 
@@ -41,14 +48,15 @@ const KebabAccession = props => {
                 return; 
             }
         }
-        const kebabObject = {
+
+        const kebabSummary = {
             name: currentKebab.name,
             img: currentKebab.img,
             price: displaingPrice(2).toFixed(2),
             ...kebabData,
         }
 
-        /// soon...
+        dispatch(cartActions.addItemToCart(kebabSummary))
     }
 
 

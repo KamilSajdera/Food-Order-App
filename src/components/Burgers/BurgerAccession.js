@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import {useState} from 'react';
+import {useDispatch} from 'react-redux';
+
 import isEqual from 'lodash/isEqual';
 
 import AccessionsAmount from './AccessionsAmount';
@@ -6,7 +8,11 @@ import AccessionsWrapper from '../../ui/AccessionsWrapper';
 import Button from '../../ui/Button';
 import InfoAccessions from '../../ui/InfoAccessions';
 
+import { cartActions } from '../../store/cart-slice';
+
 const BurgerAccession = props => {
+
+    const dispatch = useDispatch();
 
     const { currentBurger } = props;
 
@@ -32,6 +38,7 @@ const BurgerAccession = props => {
     const sendOrderHandler = () => 
     {               
         /// Logic of adding an order to the cart soon...
+        dispatch(cartActions.addItemToCart(burgerSummary));
     }
 
     return (
