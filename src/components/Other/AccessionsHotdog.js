@@ -1,10 +1,14 @@
 import { useReducer, useState } from "react";
+import { useDispatch } from 'react-redux';
+
 import AccessionsWrapper from "../../ui/AccessionsWrapper";
 import Button from '../../ui/Button';
 import InfoAccessions from '../../ui/InfoAccessions';
 
 import classes from './OtherItems.module.css';
 import logo from '../../assets/other/hotdog.png';
+
+import { cartActions } from "../../store/cart-slice";
 
 const initialData = {
     size: "normal",
@@ -41,11 +45,13 @@ const reducer = (state, action) => {
 
 const AccessionsHotdog = props => {
 
-    const [hotdogData, dispatch] = useReducer(reducer, initialData);
+    const [hotdogData, dispatchData] = useReducer(reducer, initialData);
     const [error, setError] = useState(false);
     const [isShowInfo, setIsShowInfo] = useState(false);
 
-    const setHotdogData = (type, value) => dispatch({type, value})
+    const dispatch = useDispatch();
+
+    const setHotdogData = (type, value) => dispatchData({type, value})
 
     const infoMessage = 'To complete order and add to cart, you have to choose all the bellow options!';
 
@@ -58,7 +64,14 @@ const AccessionsHotdog = props => {
                 setError(false)
         }
 
-        /// soon...
+        const hotdogSummary = {
+            name: "Hotdog", 
+            price: hotdogData.size === "normal" ? 2.00 : 3.50,
+            bread: hotdogData.bread,
+            ...hotdogData
+        }
+
+        dispatch(cartActions.addItemToCart(hotdogSummary))
     }
 
     const classesOptionSize = value => {
