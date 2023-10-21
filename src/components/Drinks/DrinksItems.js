@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+
 import classes from './DrinksItems.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +10,8 @@ import sevenUpImg from '../../assets/drinks/7up.png';
 import fantaImg from '../../assets/drinks/fanta.png';
 import spriteImg from '../../assets/drinks/sprite.png';
 import mirindaImg from '../../assets/drinks/mirinda.png';
+
+import { cartActions }from '../../store/cart-slice';
 
 const DRINKS = [
     {
@@ -62,10 +66,16 @@ const DRINKS = [
 
 const DrinksItems = () => {
 
-    const addToCart = (name, capacity, price) => 
+    const dispatch = useDispatch();
+
+    const addToCart = (img, name, capacity, price) => 
     {
-        console.log(name, capacity, price)
-        /// soon...
+        dispatch(cartActions.addItemToCart({
+            name,
+            img,
+            capacity,
+            price
+        }))
     }
 
     return (
@@ -79,21 +89,21 @@ const DrinksItems = () => {
                         <div className={classes['capacity-item']}>
                             <div className={classes.capacity}>0.5l</div>
                             <div className={classes.price}>${item.price1}</div>
-                            <div className={classes.add} onClick={() => addToCart(item.name, "0.5l", item.price1)}>
+                            <div className={classes.add} onClick={() => addToCart(item.img, item.name, "0.5l", item.price1)}>
                                 <FontAwesomeIcon icon={faPlus} />
                             </div>
                         </div>
                         <div className={classes['capacity-item']}>
                             <div className={classes.capacity}>1l</div>
                             <div className={classes.price}>${item.price2}</div>
-                            <div className={classes.add} onClick={() => addToCart(item.name, "1l", item.price2)}>
+                            <div className={classes.add} onClick={() => addToCart(item.img, item.name, "1l", item.price2)}>
                                 <FontAwesomeIcon icon={faPlus} />
                             </div>
                         </div>
                         <div className={classes['capacity-item']}>
                             <div className={classes.capacity}>2l</div>
                             <div className={classes.price}>${item.price3}</div>
-                            <div className={classes.add} onClick={() => addToCart(item.name, "2l", item.price3)}>
+                            <div className={classes.add} onClick={() => addToCart(item.img, item.name, "2l", item.price3)}>
                                 <FontAwesomeIcon icon={faPlus} />
                             </div>
                         </div>
