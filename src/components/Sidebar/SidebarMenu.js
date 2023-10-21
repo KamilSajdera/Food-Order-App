@@ -33,11 +33,9 @@ const SidebarMenu = () => {
             <li>
                 <NavLink to='/basket' className={ ({isActive}) =>  isActive ? classes2.active : undefined }>
                     <FontAwesomeIcon icon={faShoppingBasket} />
-                    <span className={classes.naviTitle}>
-                    Basket
-                    <div className={basketAmountClasses}>{totalCartAmount}</div>
-                    </span>
+                    <span className={classes.naviTitle}>Basket</span>
                 </NavLink> 
+                <div className={basketAmountClasses}>{totalCartAmount}</div>
             </li>
         </ul>
     )
