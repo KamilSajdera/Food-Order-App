@@ -6,10 +6,11 @@ import HomePage from "./routes/HomePage";
 import ErrorPage from "./routes/ErrorPage";
 
 import Burgers from "./components/Burgers/Burgers";
-import Pizzas from './components/Pizza/Pizza';
+import Pizzas from "./components/Pizza/Pizza";
 import Kebabs from "./components/Kebab/Kebab";
 import Other from "./components/Other/Other";
-import Drinks from './components/Drinks/Drinks';
+import Drinks from "./components/Drinks/Drinks";
+import Basket from "./components/Basket/CartWrapper";
 
 import store from "./store";
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
     { path: '/kebab', element: <Kebabs/> },
     { path: '/other', element: <Other /> },
     { path: '/drinks', element: <Drinks /> },
+    { path: '/basket', element: <Basket /> },
   ], errorElement: <ErrorPage /> }
  
 ])
