@@ -51,6 +51,7 @@ const KebabAccession = props => {
 
         const kebabSummary = {
             name: currentKebab.name,
+            id: "kebab",
             img: currentKebab.img,
             price: displaingPrice(2).toFixed(2),
             ...kebabData,

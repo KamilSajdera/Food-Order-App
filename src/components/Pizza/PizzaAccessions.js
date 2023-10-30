@@ -41,7 +41,9 @@ const PizzaAccessions = props => {
             setPizzaSummary((prev) => ({
                 ...prev,
                 ...pizzaItem,
-                price: pizzaData.price + pizzaPriceMap[pizzaItem.size]
+                price: pizzaData.price + pizzaPriceMap[pizzaItem.size],
+                img: pizzaData.img,
+                id: "pizza"
             }))
         }
     }

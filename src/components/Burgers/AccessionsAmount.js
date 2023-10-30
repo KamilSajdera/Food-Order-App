@@ -56,6 +56,8 @@ const AccessionsAmount = props => {
 
     useEffect(() => {
         const burgerOrderData = { 
+            id: "burger", 
+            img: currentBurger.img,
             name: currentBurger.name,
             price: currentBurger.price,
             extraPay: extraPay,

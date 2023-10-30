@@ -71,6 +71,7 @@ const DrinksItems = () => {
     const addToCart = (img, name, capacity, price) => 
     {
         dispatch(cartActions.addItemToCart({
+            id: "drink",
             name,
             img,
             capacity,
