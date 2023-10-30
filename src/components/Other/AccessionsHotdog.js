@@ -66,6 +66,7 @@ const AccessionsHotdog = props => {
 
         const hotdogSummary = {
             name: "Hotdog", 
+            id: "other",
             price: hotdogData.size === "normal" ? 2.00 : 3.50,
             bread: hotdogData.bread,
             ...hotdogData

@@ -15,6 +15,7 @@ const FriesItem = () => {
 
         const friesSummary = {
             name: "Fries",
+            id: 'other',
             size,
             price
         }

@@ -14,6 +14,7 @@ const CasseroleItem = () => {
     const addToCart = () => {
         dispatch(cartActions.addItemToCart({
             name: "Casserole",
+            id: 'other',
             price: 4.00
         }))
     }
