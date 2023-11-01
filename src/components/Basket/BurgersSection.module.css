@@ -1,0 +1,105 @@
+.summary-item 
+{
+    width: 100%;
+    border: 1px solid #f1f1f1;
+    padding: 20px 10px;
+    display: flex;
+    margin: 20px 0;
+    position: relative;
+}
+
+.summary-item img 
+{ width: 50px; }
+
+.burger-left
+{
+    width: 35%;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.burger-left h5 
+{ padding-top: 10px; }
+
+.burger-right 
+{
+    width: 60%;
+    padding: 15px 0;
+    position: relative;
+    margin-left: 5%;
+}
+
+.amount 
+{
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.remove 
+{
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    background: #ffca40;
+    border-radius: 20px;
+    padding: 2px 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.extraAccessions 
+{
+    font-size: 0.8rem;
+    padding-top: 10px;
+    color: #4e4e4e;
+}
+
+.extraAccessions img 
+{ width: 25px;}
+
+.price
+{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+    background: #fdfdfd;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+@media screen and (min-width: 600px) {
+    .summary-item 
+    { width: 48%; }
+
+    .amount 
+    { font-size: 0.9rem; }
+}
+
+@media screen and (min-width: 1023px) {
+    .summary-item
+    { 
+        width: 45%; 
+        padding: 25px 15px;
+    }
+    .summary-item img 
+    { width: 75px; }
+
+    .extraAccessions 
+    {
+        padding-top: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .burger-left h5 
+    { font-size: 1rem; }
+}
+
+@media screen and (min-width: 1200px) {
+    .summary-item 
+    { width: 32%; }
+}
