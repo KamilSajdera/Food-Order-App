@@ -1,12 +1,12 @@
 import classes from './BurgersSection.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus } from '@fortawesome/free-solid-svg-icons';
+
+import CartItem from '../../ui/CartItem';
 
 const BurgersSection = props => {
     const { items } = props;
     
     return (
-        <>
+        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%'}}>
         { items.map(item => {
 
             const shreddedLettuceIndex = item.activeAccessions.findIndex(acc => acc.name==="Shredded Lettuce")
@@ -14,14 +14,12 @@ const BurgersSection = props => {
             const cheeseIndex = item.activeAccessions.findIndex(acc => acc.name==="Cheese")
 
             return (
-                <div className={classes['summary-item']}>
+                <CartItem price={item.price} amount={item.amount} extraPay={item.extraPay} removePos={'40%'}>
                 <div className={classes['burger-left']}>
                     <img src={item.img} alt={item.name} /> 
                     <h5>{item.name}</h5>   
                 </div>
                 <div className={classes['burger-right']}>
-                    <div className={classes.amount}>{item.amount}x</div>
-                    <div className={classes.remove}><FontAwesomeIcon icon={faMinus} /></div>
                     <div className={classes.extraAccessions}>
                     <p>
                         <li>Shredded Lettuce {shreddedLettuceIndex !== -1 ? `(${item.activeAccessions[shreddedLettuceIndex].quantity+1}x)` : "(1x)"}</li>
@@ -30,14 +28,11 @@ const BurgersSection = props => {
                     </p>
                     </div>
                 </div>
-                <div className={classes.price}>
-                    ${((parseFloat(item.price)+parseFloat(item.extraPay))*item.amount).toFixed(2)}
-                </div>
-            </div>
+            </CartItem>
             )
         } 
         )} 
-        </>
+        </div>
     )
 };
 

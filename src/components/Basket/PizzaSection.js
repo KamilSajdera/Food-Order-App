@@ -1,25 +1,22 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus } from '@fortawesome/free-solid-svg-icons';
-
-
 import classes from "./PizzaSection.module.css";
+
+import CartItem from "../../ui/CartItem";
 
 const PizzaSection = props => {
 
     const { items } = props;
 
     return (
-        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%'}}>
         {
             items.map(item => 
-                <div className={classes['summary-item']}>
-                    <div className={classes.remove}><FontAwesomeIcon icon={faMinus} /></div>
-                    <div className={classes.amount}>{item.amount}x</div>
+                <CartItem price={item.price} amount={item.amount} extraPay={item.extraPay}
+                style={{display: 'block', textAlign: 'center'}}> 
                     <img src={item.img} alt={item.name} />
-                    <h5>{item.name}</h5>
-                    <p>{item.dough} dough</p>
-                    <p>Size: {item.size}cm</p>
-                    <span>
+                    <h5 className={classes.h5}>{item.name}</h5>
+                    <p className={classes.p}>{item.dough} dough</p>
+                    <p className={classes.p}>Size: {item.size}cm</p>
+                    <span className={classes.extraAccessions}>
                     Extra accessions: 
                     {
                         item.activeAccessions.length > 0 ? 
@@ -31,8 +28,7 @@ const PizzaSection = props => {
                         <p>None</p>
                     }
                     </span>
-                    <div className={classes.price}>${((parseFloat(item.price)+parseFloat(item.extraPay))*item.amount).toFixed(2)}</div>
-                </div>    
+                </CartItem>    
             )
         } 
         </div>
