@@ -39,7 +39,7 @@ const BurgerAccession = props => {
     
     const sendOrderHandler = () => 
     {       
-        props.showInfoMessage(currentBurger.name)        
+        props.showInfoMessage()        
         props.onCloseAccessions();
         dispatch(cartActions.addItemToCart(burgerSummary));
     }
