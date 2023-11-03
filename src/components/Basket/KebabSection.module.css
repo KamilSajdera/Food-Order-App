@@ -1,0 +1,32 @@
+.kebab-left
+{
+    width: 35%;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+.kebab-left img
+{
+    width: 80%;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1;
+    margin-top: -10px;
+}
+
+.kebab-left h5 
+{ padding-top: 10px; }
+
+.kebab-right 
+{
+    width: 60%;
+    padding: 15px 0;
+    position: relative;
+    margin-left: 5%;
+}
+
+.kebab-right p 
+{
+    padding-top: 15px;
+    font-size: 0.9rem;
+    color: #4e4e4e;
+}

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import MainWrapper from '../../ui/MainWrapper';
 import BurgersSection from './BurgersSection';
 import PizzaSection from './PizzaSection';
+import KebabSection from './KebabSection';
 
 import logo from '../../assets/cart/cartImg.png';
 
@@ -29,6 +30,7 @@ const CartWrapper = () => {
             <section style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                 { isNotEmpty(burgers) && <BurgersSection items={burgers} /> }
                 { isNotEmpty(pizzas) && <PizzaSection items={pizzas} /> }
+                { isNotEmpty(kebabs) && <KebabSection items={kebabs} /> }
             </section> 
         </MainWrapper>
     )
