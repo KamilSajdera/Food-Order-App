@@ -6,6 +6,7 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons';
 const CartItem = props => {
 
     const removePosition = props.removePos === undefined ? '10px' : props.removePos
+    const extraPay = props.extraPay === undefined ? 0 : props.extraPay;
 
     return (
         <div className={classes['summary-item']} style={props.style}>
@@ -13,7 +14,7 @@ const CartItem = props => {
             <div className={classes.remove} style={{left: removePosition}}><FontAwesomeIcon icon={faMinus} /></div>
             { props.children }
             <div className={classes.price}>
-                    ${((parseFloat(props.price)+parseFloat(props.extraPay))*props.amount).toFixed(2)}
+                    ${((parseFloat(props.price)+parseFloat(extraPay))*props.amount).toFixed(2)}
             </div>
         </div>
     )
