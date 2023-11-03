@@ -10,6 +10,7 @@ import spicyChickenImg from '../../assets/burger/spicychicken.avif';
 import superstarImg from '../../assets/burger/superstar.png';
 
 import BurgerAccession from './BurgerAccession';
+import InfoAction from '../../ui/InfoAction';
 
 const BURGERS = [
     {
@@ -61,6 +62,7 @@ const BurgersItems = () =>
     const itemsRef = useRef(null);
     const [showAccession, setShowAccession] = useState(false);
     const [currentBurger, setCurrentBurger] = useState(null);
+    const [infoAddedCart, setInfoAddedCart] = useState(false);
 
     useEffect(() => {
         const burgerItems = itemsRef.current.querySelectorAll(`.${classes['burger-item']}`);
@@ -96,9 +98,17 @@ const BurgersItems = () =>
         setShowAccession(false);
     }
 
+    const infoItemHandler = () =>
+    {
+        setInfoAddedCart(true);
+        setTimeout(() => {
+            setInfoAddedCart(false);
+        }, 2000);
+    }
     
     return (
         <section className={classes.burgersItemsWrapper} ref={itemsRef}>
+        { infoAddedCart && <InfoAction name={currentBurger.name} action="add" /> }
             {
                 BURGERS.map((burger) => 
                 <div className={classes['burger-item']} key={burger.id}>
@@ -114,7 +124,7 @@ const BurgersItems = () =>
                         </div>
                 )
             }
-            { showAccession && <BurgerAccession currentBurger={currentBurger} onCloseAccessions={closeAccessionsHandler}/> }
+            { showAccession && <BurgerAccession currentBurger={currentBurger} onCloseAccessions={closeAccessionsHandler} showInfoMessage={infoItemHandler} /> }
         </section>
     )
 }

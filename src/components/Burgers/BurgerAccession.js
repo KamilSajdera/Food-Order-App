@@ -16,11 +16,13 @@ const BurgerAccession = props => {
 
     const { currentBurger } = props;
 
-    const [ burgerSummary, setBurgerSummary ] = useState({
+    const [burgerSummary, setBurgerSummary] = useState({
+        id: "burger",
         activeAccessions: [],
         extraPay: 0,
         name: currentBurger.name,
-        price: currentBurger.price
+        price: currentBurger.price,
+        img: currentBurger.img
     })
 
     const [isShowInfo, setIsShowInfo] = useState(false);
@@ -36,8 +38,9 @@ const BurgerAccession = props => {
     const showInfoHandler = () => setIsShowInfo(!isShowInfo)      
     
     const sendOrderHandler = () => 
-    {               
-        /// Logic of adding an order to the cart soon...
+    {       
+        props.showInfoMessage(currentBurger.name)        
+        props.onCloseAccessions();
         dispatch(cartActions.addItemToCart(burgerSummary));
     }
 
