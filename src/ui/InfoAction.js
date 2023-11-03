@@ -1,6 +1,6 @@
 import classes from './InfoAction.module.css';
 
-const ItemAction = props => {
+const InfoAction = props => {
 
     const barBackground = props.action === 'add' ? "#1e9138" : "#b93636"
     const message = props.action === 'add' ? "was successfully added to cart!" : "ded"
@@ -13,4 +13,4 @@ const ItemAction = props => {
 };
 
 
-export default ItemAction;
+export default InfoAction;

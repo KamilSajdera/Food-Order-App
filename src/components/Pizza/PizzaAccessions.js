@@ -50,8 +50,10 @@ const PizzaAccessions = props => {
 
     const showInfoHandler = () => setIsShowInfo(!isShowInfo)  
 
-    const sendOrderPizza = () => {  
-       dispatch(cartActions.addItemToCart(pizzaSummary))
+    const sendOrderPizza = () => {
+        props.showInfoMessage();
+        props.onCloseAccessions(); 
+        dispatch(cartActions.addItemToCart(pizzaSummary))
     }
 
     return (

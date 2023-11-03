@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 
 import PizzaAccessions from './PizzaAccessions';
+import InfoAction from '../../ui/InfoAction';
 
 import classes from './PizzaItems.module.css';
 
@@ -86,6 +87,7 @@ const PizzaItems = () => {
 
     const [showAccessions, setShowAccessions] = useState(false);
     const [pizzaObject, setPizzaObject] = useState({});
+    const [infoAddedCart, setInfoAddedCart] = useState(false);
     const pizzaItemsRef = useRef();
 
     useEffect(() => {
@@ -124,8 +126,17 @@ const PizzaItems = () => {
         }, 300);
     }
 
+    const infoItemHandler = () =>
+    {
+        setInfoAddedCart(true);
+        setTimeout(() => {
+            setInfoAddedCart(false);
+        }, 2000);
+    }
+
     return (
         <section className={classes.pizzaItemsWrapper} ref={pizzaItemsRef}>
+        { infoAddedCart && <InfoAction name={pizzaObject.name} action="add" /> }
             {
                 PIZZAS.map((pizza) => 
                     <div className={classes.pizzaItem} key={pizza.id}>
@@ -136,7 +147,7 @@ const PizzaItems = () => {
                     </div>  
                 )
             }
-            { showAccessions && <PizzaAccessions pizzaData={pizzaObject} onCloseAccessions={closeAccessionsHandler} />}
+            { showAccessions && <PizzaAccessions pizzaData={pizzaObject} onCloseAccessions={closeAccessionsHandler} showInfoMessage={infoItemHandler}/>}
         </section>
     )
 }
