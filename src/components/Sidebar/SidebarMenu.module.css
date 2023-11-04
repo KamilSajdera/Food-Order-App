@@ -52,6 +52,7 @@
 {
     animation-name: jump;
     animation-duration: 300ms;
+    animation-delay: 50ms;
 }
 
 @keyframes jump {

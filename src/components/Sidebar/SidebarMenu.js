@@ -19,7 +19,7 @@ const SidebarMenu = () => {
 
         setTimeout(() => {
             setBasketAmountClasses(classes.amountBasket);
-        }, 300)
+        }, 350)
     }, [totalCartAmount])
 
     return (
