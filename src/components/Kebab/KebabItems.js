@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import KebabAccession from './KebabAccession';
+import InfoAction from '../../ui/InfoAction';
 
 import classes from './KebabItems.module.css';
 
@@ -48,6 +49,7 @@ const KebabItems = () => {
     const itemsRef = useRef(null);
     const [showAccession, setShowAccession] = useState(false);
     const [currentKebab, setCurrentKebab] = useState(null);
+    const [infoAddedCart, setInfoAddedCart] = useState(false);
 
     useEffect(() => {
         const kebabsItems = itemsRef.current.querySelectorAll(`.${classes['kebab-item']}`);
@@ -83,8 +85,17 @@ const KebabItems = () => {
         setShowAccession(false);
     }
 
+    const infoItemHandler = () =>
+    {
+        setInfoAddedCart(true);
+        setTimeout(() => {
+            setInfoAddedCart(false);
+        }, 2000);
+    }
+
     return (
         <section className={classes.kebabWrapper} ref={itemsRef}>
+        { infoAddedCart && <InfoAction name={currentKebab.name} action="add" />}
             {
                 KEBABS.map(kebabItem => (
                     <div className={classes['kebab-item']} key={kebabItem.id}>
@@ -105,7 +116,7 @@ const KebabItems = () => {
                     </div>
                 ))
             }
-            { showAccession && <KebabAccession currentKebab={currentKebab} onCloseAccessions={closeAccessionsHandler}/> }
+            { showAccession && <KebabAccession currentKebab={currentKebab} onCloseAccessions={closeAccessionsHandler} showInfoMessage={infoItemHandler} />}
         </section>
     )
 };

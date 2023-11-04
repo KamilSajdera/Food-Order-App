@@ -57,9 +57,10 @@ const KebabAccession = props => {
             ...kebabData,
         }
 
+        props.showInfoMessage();
+        props.onCloseAccessions(); 
         dispatch(cartActions.addItemToCart(kebabSummary))
     }
-
 
     return (
         <AccessionsWrapper onCloseAccessions={ () => props.onCloseAccessions()} onShowInfo={showInfoHandler}>
