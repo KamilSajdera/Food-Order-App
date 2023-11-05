@@ -73,8 +73,9 @@ const AccessionsHotdog = props => {
             ...hotdogData
         }
 
-        console.log(hotdogSummary)
-        dispatch(cartActions.addItemToCart(hotdogSummary))
+        dispatch(cartActions.addItemToCart(hotdogSummary));
+        props.showInfoMessage();
+        props.onCloseAccessions()
     }
 
     const classesOptionSize = value => {
