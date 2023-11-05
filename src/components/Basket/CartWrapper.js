@@ -1,5 +1,8 @@
 import { useSelector } from 'react-redux'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCookieBite } from '@fortawesome/free-solid-svg-icons';
+
 import MainWrapper from '../../ui/MainWrapper';
 import BurgersSection from './BurgersSection';
 import PizzaSection from './PizzaSection';
@@ -21,7 +24,6 @@ const CartWrapper = () => {
     const others = cartItems.filter(item => item.id === 'other');
     const drinks = cartItems.filter(item => item.id === 'drink');
 
-
     const isNotEmpty = value => {
         return value.length > 0;
     }
@@ -29,6 +31,14 @@ const CartWrapper = () => {
     return (
         <MainWrapper title="Basket" logoImg={logo}>
             <section style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+                { cartData.length === 0 && 
+                    <p style={{fontSize: "1.3rem", width: "80%", fontStyle: "italic",
+                            paddingTop: "50px", margin: "auto", textAlign: "center"
+                    }}>
+                        No items in cart yet. Maybe want a bite to eat? 
+                        <FontAwesomeIcon icon={faCookieBite} style={{color: "#764f48", paddingLeft: "10px"}}/>
+                    </p>
+                }
                 { isNotEmpty(burgers) && <BurgersSection items={burgers} /> }
                 { isNotEmpty(pizzas) && <PizzaSection items={pizzas} /> }
                 { isNotEmpty(kebabs) && <KebabSection items={kebabs} /> }
