@@ -17,7 +17,8 @@ const FriesItem = () => {
             name: "Fries",
             id: 'other',
             size,
-            price
+            price,
+            img: friesImg
         }
 
         dispatch(cartActions.addItemToCart(friesSummary))

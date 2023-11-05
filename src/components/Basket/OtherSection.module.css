@@ -1,0 +1,36 @@
+.img 
+{
+   aspect-ratio: 1;
+   border-radius: 50%;
+   object-fit: cover;
+}
+
+.hotdog-left
+{
+    width: 35%;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.hotdog-left h5 
+{ padding-top: 10px; }
+
+.hotdog-right 
+{
+    width: 60%;
+    padding: 15px 0;
+    position: relative;
+    margin-left: 5%;
+}
+
+.extraAccessions 
+{
+    font-size: 0.8rem;
+    padding-top: 10px;
+    color: #4e4e4e;
+}
+
+@media screen and (min-width: 767px) {
+    .extraAccessions 
+    { font-size: 0.95rem; }
+}

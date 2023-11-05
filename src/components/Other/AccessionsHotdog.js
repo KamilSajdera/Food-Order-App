@@ -14,6 +14,7 @@ const initialData = {
     size: "normal",
     bread: null,
     sauce: null,
+    img: logo
 };
 
 const reducer = (state, action) => {
@@ -72,6 +73,7 @@ const AccessionsHotdog = props => {
             ...hotdogData
         }
 
+        console.log(hotdogSummary)
         dispatch(cartActions.addItemToCart(hotdogSummary))
     }
 
