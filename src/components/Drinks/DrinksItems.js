@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import classes from './DrinksItems.module.css';
@@ -12,6 +13,7 @@ import spriteImg from '../../assets/drinks/sprite.png';
 import mirindaImg from '../../assets/drinks/mirinda.png';
 
 import { cartActions }from '../../store/cart-slice';
+import InfoAction from '../../ui/InfoAction';
 
 const DRINKS = [
     {
@@ -67,6 +69,7 @@ const DRINKS = [
 const DrinksItems = () => {
 
     const dispatch = useDispatch();
+    const [infoAddedCart, setInfoAddedCart] = useState({isShow: false, drinkName: ''});
 
     const addToCart = (img, name, capacity, price) => 
     {
@@ -77,10 +80,16 @@ const DrinksItems = () => {
             capacity,
             price
         }))
+
+        setInfoAddedCart({isShow: true, drinkName: name})
+        setTimeout(() => {
+            setInfoAddedCart({isShow: false})
+        }, 2000)
     }
 
     return (
         <section className={classes.drinksWrapper}>
+        { infoAddedCart.isShow && <InfoAction name={infoAddedCart.drinkName} action="add" /> }
         {
             DRINKS.map(item => 
                 <div className={classes['drink-item']} key={item.id}>
