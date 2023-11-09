@@ -1,0 +1,33 @@
+.img 
+{
+    width: 25%!important;
+    aspect-ratio: 0.4;
+}
+
+.p 
+{
+    padding-top: 10px;
+    color: #676767;
+}
+
+.item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (min-width: 400px) {
+    .item 
+    { width: 47%; }
+}
+
+@media screen and (min-width: 767px) {
+    .item 
+    { width: 32%; }
+}
+
+@media screen and (min-width: 1200px) {
+    .item 
+    { width: 20%; }
+}

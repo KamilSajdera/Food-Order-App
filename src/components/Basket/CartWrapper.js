@@ -8,6 +8,7 @@ import BurgersSection from './BurgersSection';
 import PizzaSection from './PizzaSection';
 import KebabSection from './KebabSection';
 import OtherSection from './OtherSection';
+import DrinksSection from './DrinksSection';
 
 import logo from '../../assets/cart/cartImg.png';
 
@@ -43,6 +44,7 @@ const CartWrapper = () => {
                 { isNotEmpty(pizzas) && <PizzaSection items={pizzas} /> }
                 { isNotEmpty(kebabs) && <KebabSection items={kebabs} /> }
                 { isNotEmpty(others) && <OtherSection items={others} /> }
+                { isNotEmpty(drinks) && <DrinksSection items={drinks} /> }
             </section> 
         </MainWrapper>
     )
