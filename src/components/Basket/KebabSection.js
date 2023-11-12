@@ -9,7 +9,7 @@ const KebabSection = props => {
     console.log(items)
 
     return (
-        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%'}}>
+        <div style={{display: 'flex', flexWrap: 'wrap', width: '100%'}}>
         {
             items.map(item => 
             <CartItem price={item.price} amount={item.amount} extraPay={item.extraPay} removePos={'40%'}>

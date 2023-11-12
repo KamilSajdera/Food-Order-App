@@ -8,7 +8,7 @@ const OtherSection = ({items}) => {
     const hotdogs = items.filter(item => item.name === "Hotdog")
 
     return (
-        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%'}}>
+        <div style={{display: 'flex', flexWrap: 'wrap', width: '100%'}}>
             { firesAndCasseroles.length > 0 && <FriesCasseroles items={firesAndCasseroles} /> }
             { hotdogs.length > 0 && <Hotdogs items={hotdogs} /> }
         </div>

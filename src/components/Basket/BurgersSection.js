@@ -6,7 +6,7 @@ const BurgersSection = props => {
     const { items } = props;
     
     return (
-        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%'}}>
+        <div style={{display: 'flex', flexWrap: 'wrap', width: '100%'}}>
         { items.map(item => {
 
             const shreddedLettuceIndex = item.activeAccessions.findIndex(acc => acc.name==="Shredded Lettuce")

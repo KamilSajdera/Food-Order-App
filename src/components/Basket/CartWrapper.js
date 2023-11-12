@@ -31,7 +31,7 @@ const CartWrapper = () => {
 
     return (
         <MainWrapper title="Basket" logoImg={logo}>
-            <section style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+            <section style={{display: 'flex', flexWrap: 'wrap'}}>
                 { cartData.length === 0 && 
                     <p style={{fontSize: "1.3rem", width: "80%", fontStyle: "italic",
                             paddingTop: "50px", margin: "auto", textAlign: "center"

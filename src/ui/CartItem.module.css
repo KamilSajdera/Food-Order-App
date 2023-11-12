@@ -4,8 +4,13 @@
     border: 1px solid #f1f1f1;
     padding: 20px 10px;
     display: flex;
-    margin: 20px 0;
+    margin: 20px 10px;
     position: relative;
+}
+
+.summary-item:first-child 
+{
+    margin-left: 0px;
 }
 
 .summary-item img 
@@ -71,5 +76,5 @@
 
 @media screen and (min-width: 1200px) {
     .summary-item 
-    { width: 32%; }
+    { width: 31%; }
 }
