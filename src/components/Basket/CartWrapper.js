@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCookieBite } from '@fortawesome/free-solid-svg-icons';
 
+import classes from './CartWrapper.module.css';
+
 import MainWrapper from '../../ui/MainWrapper';
 import BurgersSection from './BurgersSection';
 import PizzaSection from './PizzaSection';
@@ -14,6 +16,7 @@ import logo from '../../assets/cart/cartImg.png';
 
 const CartWrapper = () => {
 
+    const totalCost = useSelector(store => store.cart.totalCost)
     const cartData = useSelector(store => store.cart.items)
     const cartItems = cartData.map(item => { 
         return {...item.itemData, amount: item.amount}
@@ -31,13 +34,12 @@ const CartWrapper = () => {
 
     return (
         <MainWrapper title="Basket" logoImg={logo}>
-            <section style={{display: 'flex', flexWrap: 'wrap'}}>
+            <div className={classes.totalAmountClass}>Total <p>${totalCost.toFixed(2)}</p> </div>
+            <section className={classes.cartWrapper}>
                 { cartData.length === 0 && 
-                    <p style={{fontSize: "1.3rem", width: "80%", fontStyle: "italic",
-                            paddingTop: "50px", margin: "auto", textAlign: "center"
-                    }}>
+                    <p className={classes.emptyCart}>
                         No items in cart yet. Maybe want a bite to eat? 
-                        <FontAwesomeIcon icon={faCookieBite} style={{color: "#764f48", paddingLeft: "10px"}}/>
+                        <FontAwesomeIcon icon={faCookieBite} />
                     </p>
                 }
                 { isNotEmpty(burgers) && <BurgersSection items={burgers} /> }

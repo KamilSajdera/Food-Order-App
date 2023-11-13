@@ -6,8 +6,6 @@ const KebabSection = props => {
 
     const { items } = props;
 
-    console.log(items)
-
     return (
         <div style={{display: 'flex', flexWrap: 'wrap', width: '100%'}}>
         {

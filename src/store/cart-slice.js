@@ -5,7 +5,8 @@ const cartSlice = createSlice({
     name: "cart",
     initialState: {
         items: [], 
-        totalItems: 0
+        totalItems: 0,
+        totalCost: 0
     },
     reducers: {
         addItemToCart(state, action) {
@@ -13,14 +14,16 @@ const cartSlice = createSlice({
 
             const existingItemIndex = state.items.findIndex(item => isEqual(item.itemData, newItem.itemData))
             
-            if(existingItemIndex === -1) {
-                console.log("Item no exist. Adding to array...")
+            if(existingItemIndex === -1) 
                 state.items.push(newItem)
-            } else {
-                console.log("Item exist. Editing it's amount (+1)")
+            else 
                 state.items[existingItemIndex].amount += 1;
-            }
 
+            if(newItem.itemData.extraPay === undefined) 
+                state.totalCost += parseFloat(newItem.itemData.price)
+            else 
+                state.totalCost += parseFloat(newItem.itemData.price) + parseFloat(newItem.itemData.extraPay) 
+            
             state.totalItems++;
         }
     }
