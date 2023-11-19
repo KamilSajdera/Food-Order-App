@@ -1,6 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import classes from "./HomePage.module.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLocationDot,
+  faUserGroup,
+  faComment,
+  faCircleInfo,
+} from "@fortawesome/free-solid-svg-icons";
+
 function HomePage() {
   const messages = useMemo(
     () => [
@@ -34,9 +42,29 @@ function HomePage() {
   }, [messages]);
 
   return (
-    <section className={classes.homeBanner}>
-      <h1 ref={h1ref}>{displayingMessage}</h1>
-    </section>
+    <>
+      <section className={classes.homeBanner}>
+        <h1 ref={h1ref}>{displayingMessage}</h1>
+      </section>
+      <div className={classes.homeInfoSection}>
+        <div className={classes["info-item"]}>
+          <FontAwesomeIcon icon={faUserGroup} />
+          <p>about us</p>
+        </div>
+        <div className={classes["info-item"]} style={{ background: "#ffca40" }}>
+          <FontAwesomeIcon icon={faLocationDot} />
+          <p>our address</p>
+        </div>
+        <div className={classes["info-item"]}>
+          <FontAwesomeIcon icon={faComment} />
+          <p>socials</p>
+        </div>
+        <div className={classes["info-item"]} style={{ background: "#ffca40" }}>
+          <FontAwesomeIcon icon={faCircleInfo} />
+          <p>info</p>
+        </div>
+      </div>
+    </>
   );
 }
 
