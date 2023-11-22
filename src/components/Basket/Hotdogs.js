@@ -5,7 +5,7 @@ const Hotdogs = ({items}) => {
     return (
     <>
     { items.map(item => 
-        <CartItem price={item.price} amount={item.amount} extraPay={item.extraPay} removePos={'40%'}>
+        <CartItem item={item} removePos={'40%'} key={Math.floor(Math.random() * 999)}>
         <div className={classes['hotdog-left']}>
             <img src={item.img} alt={item.name} className={classes.img}/> 
             <h5>{item.name}</h5>   

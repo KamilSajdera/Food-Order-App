@@ -18,11 +18,11 @@ const BurgerAccession = props => {
 
     const [burgerSummary, setBurgerSummary] = useState({
         id: "burger",
-        activeAccessions: [],
-        extraPay: 0,
         name: currentBurger.name,
+        img: currentBurger.img,
         price: currentBurger.price,
-        img: currentBurger.img
+        activeAccessions: [],
+        extraPay: 0        
     })
 
     const [isShowInfo, setIsShowInfo] = useState(false);
@@ -30,7 +30,7 @@ const BurgerAccession = props => {
                      You can choose whether you want something more by clicking the plus button. 
                      Important! You cannot remove the add-on.`
 
-    const changeExtraPayHandler = value => {
+    const setBurgerDetailsHandler = value => {
         if(!isEqual(value, burgerSummary))
             setBurgerSummary(value)
     }
@@ -51,7 +51,7 @@ const BurgerAccession = props => {
             <h1>{currentBurger.name}</h1>
             <p>{currentBurger.weight}</p>
             <span>{`$${currentBurger.price.toFixed(2)} ($${burgerSummary.extraPay.toFixed(2)})`}</span>
-            <AccessionsAmount currentBurger={currentBurger} onSendBurgerDetails={changeExtraPayHandler} />
+            <AccessionsAmount currentBurger={currentBurger} onSendBurgerDetails={setBurgerDetailsHandler} />
             <Button onClick={sendOrderHandler}>Add to Order</Button>
         </AccessionsWrapper>  
     )

@@ -10,7 +10,7 @@ const PizzaSection = props => {
         <div style={{display: 'flex', flexWrap: 'wrap', width: '100%'}}>
         {
             items.map(item => 
-                <CartItem price={item.price} amount={item.amount} extraPay={item.extraPay}
+                <CartItem item={item} key={Math.floor(Math.random() * 999)}
                 style={{display: 'block', textAlign: 'center'}}> 
                     <img src={item.img} alt={item.name} />
                     <h5 className={classes.h5}>{item.name}</h5>

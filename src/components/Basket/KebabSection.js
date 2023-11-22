@@ -10,7 +10,7 @@ const KebabSection = props => {
         <div style={{display: 'flex', flexWrap: 'wrap', width: '100%'}}>
         {
             items.map(item => 
-            <CartItem price={item.price} amount={item.amount} extraPay={item.extraPay} removePos={'40%'}>
+            <CartItem item={item} removePos={'40%'} key={Math.floor(Math.random() * 999)}>
                 <div className={classes['kebab-left']}>
                     <img src={item.img} alt={item.name} /> 
                     <h5>{item.name}</h5>   

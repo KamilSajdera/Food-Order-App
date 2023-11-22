@@ -14,7 +14,7 @@ const BurgersSection = props => {
             const cheeseIndex = item.activeAccessions.findIndex(acc => acc.name==="Cheese")
 
             return (
-                <CartItem price={item.price} amount={item.amount} extraPay={item.extraPay} removePos={'40%'}>
+                <CartItem item={item} removePos={'40%'} key={Math.floor(Math.random() * 999)}>
                 <div className={classes['burger-left']}>
                     <img src={item.img} alt={item.name} /> 
                     <h5>{item.name}</h5>   

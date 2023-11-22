@@ -15,6 +15,7 @@ const PizzaAccessions = props => {
     const { pizzaData } = props;
     
     const [ pizzaSummary, setPizzaSummary ] = useState({
+        id: "pizza",
         name: pizzaData.name,
         price: pizzaData.price,
         size: pizzaData.size,
