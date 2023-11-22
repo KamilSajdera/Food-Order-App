@@ -25,6 +25,22 @@ const cartSlice = createSlice({
                 state.totalCost += parseFloat(newItem.itemData.price) + parseFloat(newItem.itemData.extraPay) 
             
             state.totalItems++;
+        },
+        removeItemFromCart(state, action) {
+            const itemToRemove = action.payload;
+            const itemToRemoveIndex = state.items.findIndex(item => isEqual(item.itemData, itemToRemove))
+            
+            if(state.items[itemToRemoveIndex].amount > 1) 
+                state.items[itemToRemoveIndex].amount -= 1;
+            else 
+                state.items.splice(itemToRemoveIndex, 1)
+
+            if(itemToRemove.extraPay === undefined) 
+                state.totalCost -= parseFloat(itemToRemove.price)
+            else 
+                state.totalCost -= parseFloat(itemToRemove.price) + parseFloat(itemToRemove.extraPay);
+
+            state.totalItems--;
         }
     }
 });

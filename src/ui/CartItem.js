@@ -15,7 +15,8 @@ const CartItem = props => {
     const dispatch = useDispatch();
 
     const removeItemHandler = () => {
-        dispatch(cartActions.removeItemFromCart(item))
+        const { amount, ...itemWithoutAmount } = item;
+        dispatch(cartActions.removeItemFromCart(itemWithoutAmount))
     }
 
     return (
