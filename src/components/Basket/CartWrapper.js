@@ -33,6 +33,7 @@ const CartWrapper = () => {
 
     const [isShowRemoveInfo, setIsShowRemoveInfo] = useState(false)
     const [removedItemName, setRemovedItemName] = useState()
+    const [timerId, setTimerId] = useState(null);
 
     const isNotEmpty = value => {
         return value.length > 0;
@@ -41,10 +42,15 @@ const CartWrapper = () => {
     const sendRemoveInfoHandler = (name) => {
         setRemovedItemName(name);
         setIsShowRemoveInfo(true);
-        setTimeout(() => {
+
+        if (timerId) 
+            clearTimeout(timerId);
+
+        const newTimerId = setTimeout(() => {
             setIsShowRemoveInfo(false)
-            setRemovedItemName('')
-        }, 2000)
+        }, 2000);
+
+        setTimerId(newTimerId);
     }
     return (
         <MainWrapper title="Basket" logoImg={logo}>
