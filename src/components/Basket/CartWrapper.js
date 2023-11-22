@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +12,8 @@ import PizzaSection from './PizzaSection';
 import KebabSection from './KebabSection';
 import OtherSection from './OtherSection';
 import DrinksSection from './DrinksSection';
+
+import InfoAction from '../../ui/InfoAction';
 
 import logo from '../../assets/cart/cartImg.png';
 
@@ -28,12 +31,24 @@ const CartWrapper = () => {
     const others = cartItems.filter(item => item.id === 'other');
     const drinks = cartItems.filter(item => item.id === 'drink');
 
+    const [isShowRemoveInfo, setIsShowRemoveInfo] = useState(false)
+    const [removedItemName, setRemovedItemName] = useState()
+
     const isNotEmpty = value => {
         return value.length > 0;
     }
 
+    const sendRemoveInfoHandler = (name) => {
+        setRemovedItemName(name);
+        setIsShowRemoveInfo(true);
+        setTimeout(() => {
+            setIsShowRemoveInfo(false)
+            setRemovedItemName('')
+        }, 2000)
+    }
     return (
         <MainWrapper title="Basket" logoImg={logo}>
+            { isShowRemoveInfo && <InfoAction name={removedItemName} action="remove" />}
             <div className={classes.totalAmountClass}>Total <p>${totalCost.toFixed(2)}</p> </div>
             <section className={classes.cartWrapper}>
                 { cartData.length === 0 && 
@@ -42,11 +57,11 @@ const CartWrapper = () => {
                         <FontAwesomeIcon icon={faCookieBite} />
                     </p>
                 }
-                { isNotEmpty(burgers) && <BurgersSection items={burgers} /> }
-                { isNotEmpty(pizzas) && <PizzaSection items={pizzas} /> }
-                { isNotEmpty(kebabs) && <KebabSection items={kebabs} /> }
-                { isNotEmpty(others) && <OtherSection items={others} /> }
-                { isNotEmpty(drinks) && <DrinksSection items={drinks} /> }
+                {isNotEmpty(burgers) && <BurgersSection items={burgers} onSendRemoveInfo={sendRemoveInfoHandler} />}
+                {isNotEmpty(pizzas) && <PizzaSection items={pizzas} onSendRemoveInfo={sendRemoveInfoHandler} />}
+                {isNotEmpty(kebabs) && <KebabSection items={kebabs} onSendRemoveInfo={sendRemoveInfoHandler} />}
+                {isNotEmpty(others) && <OtherSection items={others} onSendRemoveInfo={sendRemoveInfoHandler} />}
+                {isNotEmpty(drinks) && <DrinksSection items={drinks} onSendRemoveInfo={sendRemoveInfoHandler} />}
             </section> 
         </MainWrapper>
     )
