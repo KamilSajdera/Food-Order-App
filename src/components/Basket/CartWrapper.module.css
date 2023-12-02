@@ -39,3 +39,21 @@
     color: rgb(118, 79, 72);
     padding-left: 10px;
 }
+
+.button 
+{
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-weight: 700;
+    width: 100px;
+    background: #ffca40;
+    cursor: pointer;
+    border: 2px solid #ffca40;
+    transition: background 200ms ease;
+}
+
+.button:hover 
+{
+    background: transparent;
+}

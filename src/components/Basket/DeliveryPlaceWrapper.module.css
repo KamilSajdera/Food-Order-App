@@ -1,0 +1,130 @@
+.deliveryPlaceWrapper 
+{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #00000075;
+    z-index: 3;
+}
+
+.deliveryPlaceContent 
+{
+    width: 90%;
+    background: #fff;
+    margin: 15vh auto 5vh auto;
+    height: 70vh;
+    border-radius: 10px;
+    overflow-y: auto;
+    animation-name: showContent;
+    animation-duration: 250ms;
+}
+
+.topBar 
+{
+    background: #ffca40;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 1.1em;
+}
+
+.orderForm 
+{
+    margin-top: 30px;
+    margin-inline: 15px;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 15px;
+}
+
+.input
+{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.input label 
+{ font-size: 0.85em; }
+
+.input input 
+{
+    outline: none;
+    padding: 5px 10px;
+    margin-top: 2px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: #f1f1f1;
+    transition: border-bottom 200ms ease;
+    filter: drop-shadow(2px 2px 2px #ccc);
+}
+
+.input input:focus
+{ border-bottom: 2px solid rgb(29, 119, 176); }
+
+.btnCancel,
+.btnOrder 
+{
+    border: none;
+    margin: 25px 15px;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-weight: 700;
+    width: 100px;
+    cursor: pointer;
+}
+
+.btnCancel 
+{
+    background: #8e8e8e;
+    color: #fff;
+}
+
+.btnOrder 
+{ background: #ffca40 }
+
+.deliveryPlaceContent::-webkit-scrollbar 
+{ width: 5px; }
+
+.deliveryPlaceContent::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.deliveryPlaceContent::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+@keyframes showContent 
+{
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    } to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    .deliveryPlaceContent 
+    { 
+        width: 45%; 
+        margin-top: 10vh; 
+        height: 80vh;
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    .deliveryPlaceContent 
+    { width: 35%; }
+}
+
+@media screen and (min-width: 1350px) {
+    .deliveryPlaceContent 
+    { width: 25%; }
+}

@@ -14,6 +14,7 @@ import OtherSection from './OtherSection';
 import DrinksSection from './DrinksSection';
 
 import InfoAction from '../../ui/InfoAction';
+import DeliveryPlaceWrapper from './DeliveryPlaceWrapper';
 
 import logo from '../../assets/cart/cartImg.png';
 
@@ -34,6 +35,7 @@ const CartWrapper = () => {
     const [isShowRemoveInfo, setIsShowRemoveInfo] = useState(false)
     const [removedItemName, setRemovedItemName] = useState()
     const [timerId, setTimerId] = useState(null);
+    const [isShowDeliveryPlace, setIsShowDeliveryPlace] = useState(false);
 
     const isNotEmpty = value => {
         return value.length > 0;
@@ -52,12 +54,15 @@ const CartWrapper = () => {
 
         setTimerId(newTimerId);
     }
+
+    const isShowDeliveryPlaceHandler = (value) => setIsShowDeliveryPlace(value);
+    
     return (
         <MainWrapper title="Basket" logoImg={logo}>
             { isShowRemoveInfo && <InfoAction name={removedItemName} action="remove" />}
             <div className={classes.totalAmountClass}>Total <p>${totalCost.toFixed(2)}</p> </div>
             <section className={classes.cartWrapper}>
-                { cartData.length === 0 && 
+                { !isNotEmpty(cartData) && 
                     <p className={classes.emptyCart}>
                         No items in cart yet. Maybe want a bite to eat? 
                         <FontAwesomeIcon icon={faCookieBite} />
@@ -69,6 +74,12 @@ const CartWrapper = () => {
                 {isNotEmpty(others) && <OtherSection items={others} onSendRemoveInfo={sendRemoveInfoHandler} />}
                 {isNotEmpty(drinks) && <DrinksSection items={drinks} onSendRemoveInfo={sendRemoveInfoHandler} />}
             </section> 
+            { isShowDeliveryPlace && 
+                <DeliveryPlaceWrapper onCloseDeliveryWrapper={() => isShowDeliveryPlaceHandler(false)}/> 
+            }
+            { isNotEmpty(cartData) && 
+                <button className={classes.button} onClick={() => isShowDeliveryPlaceHandler(true)}>Next</button> 
+            }
         </MainWrapper>
     )
 }
