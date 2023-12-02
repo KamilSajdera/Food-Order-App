@@ -1,6 +1,6 @@
 import SidebarList from './SidebarList';
 
-import logo from '../../assets/main-logo.png';
+import logo from '../../assets/logo.png'
 
 import classes from './Sidebar.module.css';
 import SidebarMenu from './SidebarMenu';
