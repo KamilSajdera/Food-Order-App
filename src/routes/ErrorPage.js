@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import classes from './ErrorPage.module.css';
-import logo from '../assets/main-logo.png';
+import logo from '../assets/logo.png';
 
 const ErrorPage = () => {
 
