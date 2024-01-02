@@ -31,8 +31,10 @@ const DeliveryPlaceWrapper = props => {
             <input type="number" id="user_phonenumber" required/>
           </div>
         </form>
-        <button className={classes.btnCancel} onClick={() => props.onCloseDeliveryWrapper()}>Cancel</button>
-        <button className={classes.btnOrder} type="submit">Order</button>
+        <div className={classes.btnActions}>
+          <button className={classes.btnCancel} onClick={() => props.onCloseDeliveryWrapper()}>Cancel</button>
+          <button className={classes.btnOrder} type="submit">Order</button>
+        </div>
       </div>
     </div>
   );

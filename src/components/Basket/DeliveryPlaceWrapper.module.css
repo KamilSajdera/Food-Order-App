@@ -46,6 +46,7 @@
     display: flex;
     flex-direction: column;
     margin: 15px 0;
+    padding-left: 10px;
 }
 
 .input label 
@@ -55,37 +56,47 @@
 {
     outline: none;
     padding: 5px 10px;
-    margin-top: 2px;
+    margin-top: 5px;
     border: none;
     border-bottom: 2px solid transparent;
     background: #f1f1f1;
     transition: border-bottom 200ms ease;
     filter: drop-shadow(2px 2px 2px #ccc);
+    border-radius: 5px;
 }
 
 .input input:focus
 { border-bottom: 2px solid rgb(29, 119, 176); }
 
+.btnActions 
+{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
 .btnCancel,
 .btnOrder 
 {
     border: none;
     margin: 25px 15px;
-    padding: 10px 25px;
+    padding: 13px 25px;
     border-radius: 10px;
     font-weight: 700;
-    width: 100px;
+    width: 110px;
     cursor: pointer;
 }
 
 .btnCancel 
 {
-    background: #8e8e8e;
-    color: #fff;
+    background: #565656;
+    color: #f9f9f9;
 }
 
 .btnOrder 
-{ background: #ffca40 }
+{ 
+    background: #ffca40;
+    color: #2d2d2d;
+}
 
 .deliveryPlaceContent::-webkit-scrollbar 
 { width: 5px; }
