@@ -1,13 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import classes from "./HomePage.module.css";
+import HomeInfoDetails from "../ui/HomeInfoDetails";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLocationDot,
-  faUserGroup,
-  faComment,
-  faCircleInfo,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faUserGroup, faComment, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 function HomePage() {
   const messages = useMemo(
@@ -20,6 +16,11 @@ function HomePage() {
   );
 
   const [displayingMessage, setDisplayingMessage] = useState(messages[0]);
+  const [showInfoDetails, setShowInfoDetails] = useState({
+    isShow: false,
+    optionNumber: null,
+  });
+
   let number = useRef(0);
   let h1ref = useRef();
 
@@ -41,25 +42,52 @@ function HomePage() {
     };
   }, [messages]);
 
+  const closeInfoDetails = () => {
+    setShowInfoDetails({
+      isShow: false,
+      optionNumber: null,
+    });
+  };
+
   return (
     <>
+      {showInfoDetails.isShow && (
+        <HomeInfoDetails
+          optionNr={showInfoDetails.optionNumber}
+          onClose={closeInfoDetails}
+        />
+      )}
       <section className={classes.homeBanner}>
         <h1 ref={h1ref}>{displayingMessage}</h1>
       </section>
       <div className={classes.homeInfoSection}>
-        <div className={classes["info-item"]}>
+        <div
+          className={classes["info-item"]}
+          onClick={() => setShowInfoDetails({ isShow: true, optionNumber: 0 })}
+        >
           <FontAwesomeIcon icon={faUserGroup} />
           <p>about us</p>
         </div>
-        <div className={classes["info-item"]} style={{ background: "#ffca40" }}>
+        <div
+          className={classes["info-item"]}
+          style={{ background: "#ffca40" }}
+          onClick={() => setShowInfoDetails({ isShow: true, optionNumber: 1 })}
+        >
           <FontAwesomeIcon icon={faLocationDot} />
           <p>our address</p>
         </div>
-        <div className={classes["info-item"]}>
+        <div
+          className={classes["info-item"]}
+          onClick={() => setShowInfoDetails({ isShow: true, optionNumber: 2 })}
+        >
           <FontAwesomeIcon icon={faComment} />
           <p>socials</p>
         </div>
-        <div className={classes["info-item"]} style={{ background: "#ffca40" }}>
+        <div
+          className={classes["info-item"]}
+          style={{ background: "#ffca40" }}
+          onClick={() => setShowInfoDetails({ isShow: true, optionNumber: 3 })}
+        >
           <FontAwesomeIcon icon={faCircleInfo} />
           <p>info</p>
         </div>

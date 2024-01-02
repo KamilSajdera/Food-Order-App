@@ -1,0 +1,71 @@
+.infoOverlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: #000000c4;
+    z-index: 1;
+    
+}
+
+.infoContainer 
+{
+    width: 90%;
+    margin: 50px auto 20px auto;
+    z-index: 2;
+    background: #f1f1f1;
+    border-radius: 10px;
+    animation-name: showInfoContent;
+    animation-duration: 200ms;
+}
+
+.info-title 
+{
+    width: 100%;
+    background: #ffca40;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 15px 10px;
+    font-size: 1.4em;
+}
+
+.info-content
+{
+    width: 100%;
+    padding: 30px 20px;
+    text-align: justify;
+    color: #303030;
+}
+
+@media  screen and (min-width: 767px) {
+    .infoContainer 
+    { width: 60%; }
+}
+
+@media  screen and (min-width: 1023px) {
+    .infoContainer 
+    { 
+        width: 40%; 
+        margin-top: 80px;
+    }
+}
+
+@media  screen and (min-width: 1350px) {
+    .infoContainer 
+    { width: 30%; }
+}
+
+@keyframes showInfoContent {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
