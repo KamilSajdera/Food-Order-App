@@ -2,7 +2,6 @@
 
 .sidebarNavi 
 {
-    width: 60%;
     margin: auto;
     text-align: center;
     padding: 10px 0;
@@ -38,7 +37,7 @@
 {
     position: absolute;
     top: -10px;
-    right: -15px;
+    right: 3px;
     background: #ea4d52;
     padding: 4px 5px;
     font-size: 0.9rem;
@@ -64,17 +63,16 @@
     }
 }
 
-@media screen and (min-width: 766px) 
+@media screen and (min-width: 767px) 
 {
     .sidebarNavi li span { display: initial; }
     .sidebarNavi svg { padding-right: 10px; }
     .sidebarNavi { width: 90%; }
     .sidebarNavi li a { padding: 10px 20px; }
-    .amountBasket { right: -5%; }
 }
 
 @media screen and (min-width: 1023px) 
 {
     .sidebarNavi { width: 65%; }
-
+    .amountBasket { right: -5px; }
 }

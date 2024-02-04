@@ -54,21 +54,6 @@
     cursor: pointer;
 }
 
-
-@media screen and (min-width: 767px) {
-    .sidebarList li 
-    {
-        margin: 20px 0;
-    }
-
-    .sidebarList li a::after 
-    {
-        bottom: 10px;
-        left: 0;
-        transform: none;
-    }
-}
-
 .fontIcon 
 {
     color: #555555;
@@ -81,10 +66,24 @@
     background-color: #ffca40;
 }
 
+@media screen and (min-width: 767px) {
+    .sidebarList li 
+    {
+        margin: 30px 0;
+    }
+
+    .sidebarList li a::after 
+    {
+        bottom: 9px;
+        left: 0;
+        transform: none;
+    }
+}
+
 @media screen and (min-width: 900px) {
     .sidebarList li a::after {
         display: block;
-        left: 30%;
+        left: 49px;
     }
     
     .listTitle {
@@ -92,8 +91,16 @@
     }
 
     .sidebarList li a {
-        padding: 15px 30px;
+        padding-inline: 15px;
         display: flex;
         gap: 10px;
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    
+    .sidebarList li 
+    {
+        margin: 20px 0;
     }
 }

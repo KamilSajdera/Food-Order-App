@@ -1,12 +1,13 @@
 .sidebarContainer 
 {
     width: 20%;
-    min-height: 100vh;
     border-right: 2px solid #f3f3f3;
     padding-top: 30px;
     position: fixed;
     top: 0;
     background: #fff;
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 .sidebarContainer header 
