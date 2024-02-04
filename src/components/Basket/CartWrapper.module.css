@@ -57,3 +57,28 @@
 {
     background: transparent;
 }
+
+.orderedInfo
+{
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: green;
+    color: #f9f9f9;
+    padding: 15px 35px;
+    z-index: 1;
+    border-radius: 15px;
+    text-align: center;
+    animation-name: fadeIn;
+    animation-duration: 300ms;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

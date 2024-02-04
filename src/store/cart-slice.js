@@ -41,7 +41,13 @@ const cartSlice = createSlice({
                 state.totalCost -= parseFloat(itemToRemove.price) + parseFloat(itemToRemove.extraPay);
 
             state.totalItems--;
+        },
+        clearBasket(state, action) {
+            state.items = [];
+            state.totalCost = 0;
+            state.totalItems = 0;
         }
+
     }
 });
 

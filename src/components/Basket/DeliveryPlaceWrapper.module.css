@@ -36,7 +36,6 @@
 {
     margin-top: 30px;
     margin-inline: 15px;
-    border-bottom: 1px solid #e1e1e1;
     padding-bottom: 15px;
 }
 
@@ -73,12 +72,13 @@
     width: 100%;
     margin: auto;
     text-align: center;
+    border-top:  1px solid #e1e1e1;
 }
 .btnCancel,
 .btnOrder 
 {
     border: none;
-    margin: 25px 15px;
+    margin: 15px;
     padding: 13px 25px;
     border-radius: 10px;
     font-weight: 700;
