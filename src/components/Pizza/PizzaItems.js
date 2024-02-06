@@ -88,6 +88,7 @@ const PizzaItems = () => {
     const [showAccessions, setShowAccessions] = useState(false);
     const [pizzaObject, setPizzaObject] = useState({});
     const [infoAddedCart, setInfoAddedCart] = useState(false);
+    const [placedPizzaName, setPlacedPizzaName] = useState('');
     const pizzaItemsRef = useRef();
 
     useEffect(() => {
@@ -129,6 +130,7 @@ const PizzaItems = () => {
     const infoItemHandler = () =>
     {
         setInfoAddedCart(true);
+        setPlacedPizzaName(pizzaObject.name)
         setTimeout(() => {
             setInfoAddedCart(false);
         }, 2000);
@@ -136,7 +138,7 @@ const PizzaItems = () => {
 
     return (
         <section className={classes.pizzaItemsWrapper} ref={pizzaItemsRef}>
-        { infoAddedCart && <InfoAction name={pizzaObject.name} action="add" /> }
+        { infoAddedCart && <InfoAction name={placedPizzaName} action="add" /> }
             {
                 PIZZAS.map((pizza) => 
                     <div className={classes.pizzaItem} key={pizza.id}>

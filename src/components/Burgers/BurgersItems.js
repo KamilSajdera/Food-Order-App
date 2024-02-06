@@ -63,22 +63,32 @@ const BurgersItems = () =>
     const [showAccession, setShowAccession] = useState(false);
     const [currentBurger, setCurrentBurger] = useState(null);
     const [infoAddedCart, setInfoAddedCart] = useState(false);
+    const [placedBurgerName, setPlacedBurgerName] = useState('');
 
     useEffect(() => {
+        const burgerHandleClick = (event) => {
+            const clickedBurger = event.currentTarget.querySelector('h1').textContent;
+            showAccessionWrapper(clickedBurger);
+            animateItem(event.currentTarget);
+        };
+
         const burgerItems = itemsRef.current.querySelectorAll(`.${classes['burger-item']}`);
         burgerItems.forEach(burgerItem => 
-            burgerItem.addEventListener('click', () => { 
-                showAccessionWrapper(burgerItem.querySelector('h1').textContent)
-                animateItem(burgerItem)
-            })    
+            burgerItem.addEventListener('click', burgerHandleClick)    
         )
 
         return () => {
             burgerItems.forEach(burgerItem => {
-                burgerItem.removeEventListener('click', null)
+                burgerItem.removeEventListener('click', burgerHandleClick)
             })
         }
     }, [])
+
+    const showAccessionWrapper = (title) => {
+        const burgerObject = BURGERS.find(burger => burger.name === title);
+        setCurrentBurger(burgerObject);
+        setShowAccession(true);
+    }
 
     const animateItem = (e) => {
         e.classList.add(classes.clickAnimation);
@@ -88,18 +98,13 @@ const BurgersItems = () =>
         }, 300);
     }
 
-    const showAccessionWrapper = (title) => {
-        const burgerObject = BURGERS.find(burger => burger.name === title);
-        setCurrentBurger(burgerObject);
-        setShowAccession(true);
-    }
-
     const closeAccessionsHandler = () => {
         setShowAccession(false);
     }
 
     const infoItemHandler = () =>
     {
+        setPlacedBurgerName(currentBurger.name)
         setInfoAddedCart(true);
         setTimeout(() => {
             setInfoAddedCart(false);
@@ -108,7 +113,7 @@ const BurgersItems = () =>
     
     return (
         <section className={classes.burgersItemsWrapper} ref={itemsRef}>
-        { infoAddedCart && <InfoAction name={currentBurger.name} action="add" /> }
+        { infoAddedCart && <InfoAction name={placedBurgerName} action="add" /> }
             {
                 BURGERS.map((burger) => 
                 <div className={classes['burger-item']} key={burger.id}>

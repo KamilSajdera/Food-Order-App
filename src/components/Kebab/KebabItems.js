@@ -50,6 +50,7 @@ const KebabItems = () => {
     const [showAccession, setShowAccession] = useState(false);
     const [currentKebab, setCurrentKebab] = useState(null);
     const [infoAddedCart, setInfoAddedCart] = useState(false);
+    const [placedKebabName, setPlacedKebabName] = useState('');
 
     useEffect(() => {
         const kebabsItems = itemsRef.current.querySelectorAll(`.${classes['kebab-item']}`);
@@ -87,6 +88,7 @@ const KebabItems = () => {
 
     const infoItemHandler = () =>
     {
+        setPlacedKebabName(currentKebab.name);
         setInfoAddedCart(true);
         setTimeout(() => {
             setInfoAddedCart(false);
@@ -95,7 +97,7 @@ const KebabItems = () => {
 
     return (
         <section className={classes.kebabWrapper} ref={itemsRef}>
-        { infoAddedCart && <InfoAction name={currentKebab.name} action="add" />}
+        { infoAddedCart && <InfoAction name={placedKebabName} action="add" />}
             {
                 KEBABS.map(kebabItem => (
                     <div className={classes['kebab-item']} key={kebabItem.id}>
