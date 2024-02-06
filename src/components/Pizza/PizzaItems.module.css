@@ -28,7 +28,7 @@
     margin-top: 10px;
 }
 
-.pizzaItem h1 
+.pizzaItem h3
 {
     padding-top: 15px;
     font-size: 2rem;
@@ -78,21 +78,3 @@
         width: 31%;
     }
 }
-
-.clickAnimation 
- {
-    animation-name: scale;
-    animation-duration: 0.2s;
- }
-
- @keyframes scale {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.8);
-    }
-    100% {
-        transform: scale(1);
-    }
- }

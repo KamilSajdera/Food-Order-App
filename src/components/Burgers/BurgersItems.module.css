@@ -39,20 +39,7 @@
     padding-top: 40px;
 }
 
-
-.itemBottomShadow
-{
-    width: 45%;
-    height: 0px;
-    background: transparent;
-    position: absolute;
-    left: 50%;
-    bottom: 15px;
-    transform: translateX(-50%);
-    box-shadow: 0px 0px 12px 3px;
-}
-
-.burger-item h1 
+.burger-item h3
 {
     font-family: 'DM Sans', sans-serif!important;
     padding-top: 20px;
@@ -68,6 +55,18 @@
     font-weight: 600;
     font-size: 1.2rem;
 }
+
+.itemBottomShadow
+{
+    width: 45%;
+    height: 0px;
+    background: transparent;
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 12px 3px;
+} 
 
 .price 
 {
@@ -86,21 +85,3 @@
     .burger-item { width: 31%; } 
  }
 
-
- .clickAnimation 
- {
-    animation-name: scale;
-    animation-duration: 0.2s;
- }
-
- @keyframes scale {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.8);
-    }
-    100% {
-        transform: scale(1);
-    }
- }
